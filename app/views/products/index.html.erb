@@ -1,1 +1,14 @@
-<h2>Product Index Page</h2>
+<h2>List of Products</h2>
+
+<ul>
+  <% @products.each do |p| %>
+  <li>
+    <strong>
+      <%= p.name %>
+      <%= p.price %>
+    </strong>
+    <div>
+      <%= link_to "View Details - Image", product_path(p.id) %>
+    </div>
+  </li>
+  <% end %>
