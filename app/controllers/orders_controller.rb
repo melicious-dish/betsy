@@ -27,7 +27,7 @@ before_action :find_order, only: [:show, :edit, :update, :destroy]
       # flash[:result_text] = "Could not create order"
       # flash[:messages] = @order.errors.messages
       # render :new, status: :bad_request
-  end
+    end
   end
 
   def edit
