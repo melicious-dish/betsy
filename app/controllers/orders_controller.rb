@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-before_action :find_order, only: [:show, :edit, :update, :destroy]
+  before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -39,26 +39,27 @@ before_action :find_order, only: [:show, :edit, :update, :destroy]
   def update
     if @order.nil?
       head :not_found
-  end
-
-  def destroy
-    if @order.nil?
-      head :not_found
     end
-    #if @order.destroy
+
+    def destroy
+      if @order.nil?
+        head :not_found
+      end
+      #if @order.destroy
       #redirect_to orders_path
-    #else
+      #else
       #render :show
-    #end
-  end
+      #end
+    end
 
-  private
+    private
 
-  def order_params
-    return
+    def order_params
+      return
     end
 
     def find_order
       @order = Order.find_by(id: params[:id])
     end
   end
+end
