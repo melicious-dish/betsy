@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 private
   def find_merchant
     if session[:username]
-      @login_user = User.find_by(id: session[:username])
+      @login_user = Merchant.find_by(id: session[:username])
     end
   end
 end

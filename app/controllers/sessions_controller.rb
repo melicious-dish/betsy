@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
   end
 
 
-    def destroy
+  def destroy
     session[:username] = nil
     flash[:status] = :success
     flash[:success] = "Successfully logged out!"
