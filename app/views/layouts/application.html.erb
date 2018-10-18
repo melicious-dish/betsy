@@ -9,7 +9,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <ul class="nav app-header__user-nav-container">
+        <% if session[:username] %>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-primary"   %>
+        </li>
+        <% else %>
+        <li class="nav-item app-header__nav_item">
+           <%= link_to "Login with Github", "/auth/github", class: "btn btn-primary"  %>
+        </li>
+        <% end %>
+
+      </ul>
+
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+
   </body>
 </html>

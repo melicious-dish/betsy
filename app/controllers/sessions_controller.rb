@@ -1,24 +1,58 @@
 class SessionsController < ApplicationController
 
+  # def create
+  #   auth_hash = request.env['omniauth.auth']
+  #   merchant = Merchant.find_by(uid: auth_hash[:uid], provider: 'github')
+  #
+  #   if merchant
+  #     flash[:success] = "Logged in as merchant #{merchant.username}"
+  #
+  #   else
+  #     merchant = Merchant.build_from_github(auth_hash)
+  #
+  #     if merchant.save
+  #       flash[:success] = "Logged in as new merchant #{merchant.username}"
+  #     else
+  #       flash[:error] = "Could not create new user account: #{merchant.errors.messages}"
+  #       redirect_to root_path
+  #       return
+  #     end
+  #     session[:username] = merchant.id
+  #     redirect_to root_path
+  #   end
+  # end
+
   def create
     auth_hash = request.env['omniauth.auth']
     merchant = Merchant.find_by(uid: auth_hash[:uid], provider: 'github')
-
     if merchant
-      flash[:success] = "Logged in as merchant #{merchant.username}"
-
+      # User was found in the database
+      flash[:success] = "Logged in as returning user #{merchant.username}"
     else
+      # User doesn't match anything in the DB
+      # Attempt to create a new user
       merchant = Merchant.build_from_github(auth_hash)
+
       if merchant.save
         flash[:success] = "Logged in as new merchant #{merchant.username}"
+
       else
-        flash[:error] = "Could not create new user account: #{merchant.errors.messages}"
+        # Couldn't save the user for some reason. If we
+        # hit this it probably means there's a bug with the
+        # way we've configured GitHub. Our strategy will
+        # be to display error messages to make future
+        # debugging easier.
+        flash[:error] = "Could not create new merchant account: #{merchant.errors.messages}"
         redirect_to root_path
         return
       end
-      session[:username] = merchant.id
-      redirect_to root_path
     end
+
+    # If we get here, we have a valid user instance
+    session[:username] = merchant.id
+    redirect_to root_path
+  end
+
 
     def destroy
     session[:username] = nil
