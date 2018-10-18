@@ -16,6 +16,18 @@ before_action :find_order, only: [:show, :edit, :update, :destroy]
   end
 
   def create
+    @order = Order.new #(params)
+    @order_category = @order.category
+    if @order.save
+      flash[:status] = :success
+      # flash[:result_text] = "Successfully created order"
+      # redirect_to
+    else
+      flash[:status] = :failure
+      # flash[:result_text] = "Could not create order"
+      # flash[:messages] = @order.errors.messages
+      # render :new, status: :bad_request
+  end
   end
 
   def edit
@@ -33,17 +45,12 @@ before_action :find_order, only: [:show, :edit, :update, :destroy]
     if @order.nil?
       head :not_found
     end
-
     #if @order.destroy
       #redirect_to orders_path
     #else
       #render :show
     #end
   end
-
-  def review
-  end
-
 
   private
 
