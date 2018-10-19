@@ -10,18 +10,28 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:status] = :success
-      flash[:result_text] = "Successfully created
-      #{@product}"
-      redirect_to product_path(@product)
-    else
+    if @login_user
+      # merchant_id = @login_user.id
+      # @login_user = @merchant.product.id
+      @product = Product.new(product_params)
+      @product.merchant_id = @login_user.id
+      if @product.save
+        flash[:status] = :success
+        flash[:result_text] = "Successfully created
+        #{@product}"
+        redirect_to product_path(@product)
+        # debugger
+      else
+        render :new
+      end
+    end
+    if !@login_user
       flash[:status] = :failure
       flash[:result_text] = "Could not create #{@product}"
       flash[:messages] = @product.errors.messages
-      render :new, status: :bad_request
+      redirect_to root_path
     end
+    # debugger
   end
 
   def show;
@@ -66,6 +76,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :description, :photo_url, :status, :inventory)
+
   end
 
   def find_product
