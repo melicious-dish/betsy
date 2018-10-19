@@ -21,9 +21,17 @@
       <li class="nav-item app-header__nav_item">
         <%= link_to "Shop All Products", products_path, class: "nav-link" %>
       </li>
-      <li class="nav-item app-header__nav_item">
-        <%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %>
-      </li>
+        <div class="dropdown">
+        <span><%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %></span>
+        <div class="dropdown-content">
+          <% Merchant.all.each do |merchant| %>
+         <li><%= link_to merchant.username, products_path(merchant.id) %></li>
+         <% end %>
+        </div>
+      </div>
+
+
+
       <li class="nav-item app-header__nav_item">
         <%= link_to "Shop By Category", merchants_path, class: "nav-link" %>
       </li>
