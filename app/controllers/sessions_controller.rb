@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if merchant
       # User was found in the database
       flash[:status] = "success"
-      flash[:result_text] = "Logged in as returning user #{merchant.username}"
+      flash[:result_text] = "Logged in as returning merchant #{merchant.username}"
       flash[:messages] = merchant.errors.messages
 
     else
