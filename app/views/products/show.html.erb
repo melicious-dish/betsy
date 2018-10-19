@@ -1,1 +1,30 @@
-<h2>Product Show Page</h2>
+<h2>Product Details</h2>
+
+<h4><strong><%= @product.name %></strong></h4>
+
+<div class="Image">
+  <%= image_tag @product.photo_url %>
+</div>
+<div><strong>Price:$</strong>
+  <%= @product.price %>
+</div>
+
+<div><strong>Description:</strong>
+  <%= @product.description %>
+  </div>
+
+<div><strong>Seller:</strong>
+  <%= @product.merchant.username %>
+</div>
+
+<div><strong>Description:</strong>
+  <%= @product.description %>
+</div>
+
+<div><strong>Categories:</strong>
+  <%= %>
+</div>
+
+<div><strong>Add to Cart</strong>
+  <%=  %>
+</div>
