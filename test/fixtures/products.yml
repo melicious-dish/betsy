@@ -6,7 +6,7 @@ poodr:
   description: ruby is practical and full of bicycles and flexible
   photo_url: /../app/assets/images/test/americat1.jpg
   status: true
-  inventory: 0
+  inventory: 1
   merchant: jupiter
 
 koolaid:
@@ -15,7 +15,7 @@ koolaid:
   description: a sugary drink that breaks through a wall
   photo_url: /../app/assets/images/test/americat2.jpg
   status: true
-  inventory: 1
+  inventory: 100
   merchant: mercury
 
 wig1:
@@ -33,7 +33,7 @@ houseplant1:
   description: seymour
   photo_url: /../app/assets/images/test/americat2.jpg
   status: true
-  inventory: 11
+  inventory: 0
   merchant: saturn
 
 lamp:
