@@ -3,7 +3,11 @@
 one:
   username: MyString
   email: MyString
+  uid: 1
+  provider: MyString
 
 two:
   username: MyString
   email: MyString
+  uid: 2
+  provider: MyString
