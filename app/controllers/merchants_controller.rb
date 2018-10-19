@@ -5,7 +5,7 @@ class MerchantsController < ApplicationController
 
   def show
     # QUESTION: add if/else so only login_user can view merchant account page??
-    @merchant = Merchant.find_by(id: params[:id])
+    @merchant = Merchant.find(params[:id])
     render_404 unless @merchant
   end
 
