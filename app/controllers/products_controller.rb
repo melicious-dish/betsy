@@ -27,11 +27,39 @@ class ProductsController < ApplicationController
   def show;
   end
 
-  def edit;
-
+  def edit
+    @product = Product.new()
   end
 
   def update
+    if !@login_user
+      flash[:status] = :failure
+      flash[:result_text] = "You must log in to update #{@product}"
+      flash[:messages] = @product.errors.messages
+      redirect_back fallback_location: root_path
+    end
+
+    if !find_product
+      flash[:status] = :failure
+      flash[:result_text] = "Unable to find #{@product}"
+      flash[:messages] = @product.errors.messages
+      redirect_back fallback_location: root_path
+    end
+
+    @product = find_product()
+    result = @product.update(product_params)
+
+    if result
+      flash[:status] = :success
+      flash[:result_text] = "Successfully updated
+      #{@product}"
+      redirect_to product_path(@product)
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not update #{@product}"
+      flash[:messages] = @product.errors.messages
+      render :edit, status: :bad_request
+    end
   end
 
   private
