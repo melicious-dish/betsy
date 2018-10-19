@@ -6,7 +6,7 @@ orderitem1:
   order: order1
 
 orderitem2:
-  quantity: 1
+  quantity: 2
   product: wig1
   order: order2
 

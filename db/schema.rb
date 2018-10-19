@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_212016) do
+ActiveRecord::Schema.define(version: 2018_10_19_222914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_212016) do
     t.datetime "updated_at", null: false
     t.bigint "product_id"
     t.bigint "order_id"
+    t.boolean "shipped", default: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -48,14 +49,16 @@ ActiveRecord::Schema.define(version: 2018_10_18_212016) do
   create_table "orders", force: :cascade do |t|
     t.string "payment_status"
     t.boolean "clear_cart"
-    t.integer "total_price"
-    t.datetime "date_time_placed"
     t.string "fulfillment_status"
-    t.string "guest_user_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "order_item_id"
-    t.index ["order_item_id"], name: "index_orders_on_order_item_id"
+    t.string "guest_email"
+    t.string "guest_mailing"
+    t.string "guest_cc_name"
+    t.string "guest_cc_num"
+    t.string "guest_cc_exp_date"
+    t.string "guest_cc_cvv_code"
+    t.string "guest_cc_zip"
   end
 
   create_table "products", force: :cascade do |t|
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_212016) do
     t.integer "price"
     t.string "description"
     t.string "photo_url"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.integer "inventory"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,7 +85,6 @@ ActiveRecord::Schema.define(version: 2018_10_18_212016) do
 
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "order_items"
   add_foreign_key "products", "merchants"
   add_foreign_key "reviews", "products"
 end
