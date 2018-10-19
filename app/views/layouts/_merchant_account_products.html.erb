@@ -1,0 +1,52 @@
+<h3>Products</h3>
+<table>
+  <thead>
+    <td>
+      Item Name
+    </td>
+    <td>
+      Inventory
+    </td>
+    <td>
+      Price
+    </td>
+    <td>
+      Status
+    </td>
+    <td>
+
+    </td>
+    <td>
+
+    </td>
+  </thead>
+  <tbody>
+
+<!-- QUESTION: render partial the repeated code below to DRY it up? -->
+<% @merchant.products.each do |product| %>
+  <tr>
+    <td>
+      <%= link_to product.name, product_path(product) %>
+    </td>
+    <td>
+      <%= product.inventory %>
+    </td>
+    <td>
+      <!-- TODO: do some work to display it nicely -->
+      <%= product.price %>
+    </td>
+    <td>
+      <!-- TODO: change true to show as active/available and false to show as discontinued/unavailable -->
+      <%= product.status %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_product_path(product) %>
+    </td>
+    <!-- TODO: decide if link here should change column from true to false -->
+    <td>
+      Delete/Discontinue???
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
