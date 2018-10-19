@@ -27,8 +27,14 @@
       <li class="nav-item app-header__nav_item">
         <%= link_to "Cart", orders_path, class: "nav-link" %>
       </li>
+
+
       <li>
         <% if session[:username] %>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "Logged in as #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
+            </li>
+
           <li class="nav-item app-header__nav_item">
             <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-primary"   %>
           </li>
