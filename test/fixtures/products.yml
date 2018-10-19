@@ -1,17 +1,73 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price: 
-  description: MyString
-  photo_url: MyString
-  status: false
-  inventory: 
+poodr:
+  name: Poodr
+  price: 2000
+  description: ruby is practical and full of bicycles and flexible
+  photo_url: /../app/assets/images/test/americat1.jpg
+  status: true
+  inventory: 0
+  merchant: jupiter
 
-two:
-  name: MyString
-  price: 
-  description: MyString
-  photo_url: MyString
-  status: false
-  inventory: 
+koolaid:
+  name: koolaid
+  price: 100
+  description: a sugary drink that breaks through a wall
+  photo_url: /../app/assets/images/test/americat2.jpg
+  status: true
+  inventory: 1
+  merchant: mercury
+
+wig1:
+  name: wig1
+  price: 4444
+  description: not just for halloween
+  photo_url: /../app/assets/images/test/americat1.jpg
+  status: true
+  inventory: 100
+  merchant: saturn
+
+houseplant1:
+  name: houseplant1
+  price: 500
+  description: seymour
+  photo_url: /../app/assets/images/test/americat2.jpg
+  status: true
+  inventory: 11
+  merchant: saturn
+
+lamp:
+  name: lamp
+  price: 6600
+  description: let there be light
+  photo_url: /../app/assets/images/test/americat1.jpg
+  status: true
+  inventory: 50
+  merchant: mars
+
+nailpolish1:
+  name: nailpolish1
+  price: 1
+  description: fancy toes
+  photo_url: /../app/assets/images/test/americat2.jpg
+  status: true
+  inventory: 2
+  merchant: saturn
+
+onesie1:
+  name: onesie1
+  price: 900
+  description: not your grandma's jammies
+  photo_url: /../app/assets/images/test/americat1.jpg
+  status: true
+  inventory: 5
+  merchant: mars
+
+snuggie:
+  name: snuggie
+  price: 500
+  description: hygge time
+  photo_url: /../app/assets/images/test/americat2.jpg
+  status: true
+  inventory: 44
+  merchant: jupiter

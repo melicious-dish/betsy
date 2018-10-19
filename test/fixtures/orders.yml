@@ -1,17 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  payment_status: MyString
+order1:
+  payment_status: pending
   clear_cart: false
-  total_price: 
-  date_time_placed: 2018-10-18 10:44:34
-  fulfillment_status: MyString
-  guest_user_info: MyString
+  total_price: TBD OR DELETE
+  date_time_placed: 2018-10-18 10:44:34 TBD OR DELETE
+  fulfillment_status: pending
+  guest_user_info: TBD
+  order_item: TBD or DELETE
 
-two:
-  payment_status: MyString
+order2:
+  payment_status: paid
   clear_cart: false
-  total_price: 
-  date_time_placed: 2018-10-18 10:44:34
-  fulfillment_status: MyString
-  guest_user_info: MyString
+  total_price: TBD OR DELETE
+  date_time_placed: 2018-10-18 10:44:34 TBD OR DELETE
+  fulfillment_status: complete
+  guest_user_info: TBD
+  order_item: TBD OR DELETE
+
+order3:
+  payment_status: pending
+  clear_cart: false
+  total_price: TBD OR DELETE
+  date_time_placed: 2018-10-18 10:44:34 TBD OR DELETE
+  fulfillment_status: pending
+  guest_user_info: TBD
+  order_item: TBD OR DELETE
+
+order4:
+  payment_status: pending
+  clear_cart: false
+  total_price: TBD OR DELETE
+  date_time_placed: 2018-10-18 10:44:34 TBD OR DELETE
+  fulfillment_status: pending
+  guest_user_info: TBD
+  order_item: TBD OR DELETE
