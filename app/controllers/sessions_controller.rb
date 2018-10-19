@@ -5,14 +5,19 @@ class SessionsController < ApplicationController
     merchant = Merchant.find_by(uid: auth_hash[:uid], provider: 'github')
     if merchant
       # User was found in the database
-      flash[:success] = "Logged in as returning user #{merchant.username}"
+      flash[:status] = "success"
+      flash[:result_text] = "Logged in as returning user #{merchant.username}"
+      flash[:messages] = merchant.errors.messages
+
     else
       # User doesn't match anything in the DB
       # Attempt to create a new user
       merchant = Merchant.build_from_github(auth_hash)
 
       if merchant.save
-        flash[:success] = "Logged in as new merchant #{merchant.username}"
+        flash[:status] = "success"
+        flash[:result_text] = "Logged in as new merchant #{merchant.username}"
+        flash[:messages] = merchant.errors.messages
 
       else
         # Couldn't save the user for some reason. If we
@@ -20,9 +25,12 @@ class SessionsController < ApplicationController
         # way we've configured GitHub. Our strategy will
         # be to display error messages to make future
         # debugging easier.
-        flash[:error] = "Could not create new merchant account: #{merchant.errors.messages}"
+        flash[:status] = "failure"
+        flash[:result_text] = "Could not create new merchant account: #{merchant.errors.messages}"
+        flash[:messages] = merchant.errors.messages
+
         redirect_to root_path
-        return
+
       end
     end
 
@@ -34,7 +42,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:username] = nil
-    flash[:status] = :success
     flash[:success] = "Successfully logged out!"
 
     redirect_to root_path
