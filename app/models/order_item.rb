@@ -4,4 +4,6 @@ class OrderItem < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }
 
+  # QUESTION: date_time_placed --> redundant b/c of created_at time stamp??
+
 end
