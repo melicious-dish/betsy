@@ -4,8 +4,26 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+readables:
+  category_name: readables
+
+wearables:
+  category_name: wearables
+
+cozyables:
+  category_name: cozyables
+
+snackables:
+  category_name: snackables
+
+hairables:
+  category_name: hairables
+
+plantables:
+  category_name: plantables
+
+houseables:
+  category_name: houseables
+
+beautifiables:
+  category_name: beautifiables
