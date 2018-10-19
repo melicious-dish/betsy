@@ -19,10 +19,13 @@
   <nav class="app-header__nav">
     <ul class="nav app-header__site-nav-container">
       <li class="nav-item app-header__nav_item">
-        <%= link_to "Products", products_path, class: "nav-link" %>
+        <%= link_to "Shop All Products", products_path, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
-        <%= link_to "Merchants", merchants_path, class: "nav-link" %>
+        <%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= link_to "Shop By Category", merchants_path, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
         <%= link_to "Cart", orders_path, class: "nav-link" %>
@@ -32,7 +35,7 @@
       <li>
         <% if session[:username] %>
         <li class="nav-item app-header__nav_item">
-        <%= link_to "Logged in as #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
+        <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
             </li>
 
           <li class="nav-item app-header__nav_item">
