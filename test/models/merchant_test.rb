@@ -20,13 +20,12 @@ describe Merchant do
     end
 
     it 'requires a username present' do
+      expect(mercury.valid?).must_equal true
+
       mercury.username = nil
 
       expect(mercury.valid?).must_equal false
       expect(mercury.errors.messages).must_include :username
-
-      mercury.username = "merch"
-      expect(mercury.valid?).must_equal true
     end
 
     it 'requires a unique username' do
@@ -36,9 +35,14 @@ describe Merchant do
 
       expect(saturn.valid?).must_equal false
       expect(saturn.errors.messages).must_include :username
+
+      saturn.username = "saturn"
+      expect(saturn.valid?).must_equal true
     end
 
     it 'requires an email address present' do
+      expect(mercury.valid?).must_equal true
+
       mercury.email = nil
 
       expect(mercury.valid?).must_equal false
@@ -49,12 +53,15 @@ describe Merchant do
       mars = merchants(:mars)
       saturn = merchants(:saturn)
       mars.email = "hello@hello.com"
-      saturn.email = "hello@hello.com"
       mars.save
+      saturn.email = "hello@hello.com"
       saturn.save
 
       expect(saturn.valid?).must_equal false
       expect(saturn.errors.messages).must_include :email
+
+      saturn.email = "unique@email.org"
+      expect(saturn.valid?).must_equal true
     end
   end
 
