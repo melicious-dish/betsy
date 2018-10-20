@@ -8,7 +8,16 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
-private
+  # return the current order or create a new order if none exists
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
+  
+  private
   def find_merchant
     if session[:username]
       @login_user = Merchant.find_by(id: session[:username])
