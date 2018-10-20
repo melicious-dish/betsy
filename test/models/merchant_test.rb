@@ -52,10 +52,8 @@ describe Merchant do
     it 'requires a unique email address' do
       mars = merchants(:mars)
       saturn = merchants(:saturn)
-      mars.email = "hello@hello.com"
-      mars.save
-      saturn.email = "hello@hello.com"
-      saturn.save
+
+      saturn.email = mars.email
 
       expect(saturn.valid?).must_equal false
       expect(saturn.errors.messages).must_include :email
