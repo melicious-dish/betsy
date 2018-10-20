@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @order_item = current_order.order_items.new
   end
 
   def create
