@@ -12,17 +12,27 @@ class OrderItem < ApplicationRecord
 
 # take the associated product's price if the order item is not currently persisted. If the order item is persisted (Returns true if the record is persisted, i.e. it’s not a new record and it was not destroyed, otherwise returns false.)then the contents of the unit_price field will be returned instead.
 
-  def unit_price
-    if persisted?
-      self[:unit_price]
-    else
-      product.price
-    end
-  end
+  # def unit_price
+  #   if persisted?
+  #     self[:unit_price]
+  #   else
+  #     product.price
+  #   end
+  # end
 
-  def total_price
-    unit_price * quantity
-  end
+  # def total_price
+  #   unit_price * quantity
+  # end
+
+ # def subtotal
+ #   subtotal = 0
+ #   self.products.each do |p|
+ #     subtotal += p.price
+ #   end
+ #   return subtotal
+ # end
+
+
 
   private
   def product_present
