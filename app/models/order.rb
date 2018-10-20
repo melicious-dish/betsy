@@ -9,4 +9,16 @@ class Order < ApplicationRecord
   # QUESTION: total_price --> has to come from the sum of all the order_items via products.... (also needs to be int)
   # QUESTION: should not put order_item id down b/c it could then take many (ex: koolaid, nailpolish, etc.)
 
+  def subtotal
+    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+  end
+  private
+  def set_order_status
+    self.order_status_id = 1
+  end
+
+  def update_subtotal
+    self[:subtotal] = subtotal
+  end
+
 end
