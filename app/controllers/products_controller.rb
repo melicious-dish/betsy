@@ -2,7 +2,16 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update]
 
   def index
-    @products = Product.all
+    if params[:merchant_id]
+      merchant = Merchant.find_by(id: params[:merchant_id])
+      @products = merchant.products
+
+    elsif params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+    else
+      @products = Product.all
+    end
   end
 
   def new
