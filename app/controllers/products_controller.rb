@@ -80,11 +80,13 @@ class ProductsController < ApplicationController
     if @order_item.save
       # product.inventory -= params[:order_products][:inventory].to_i
       # product.save
-      flash[:success] = "Successfully added product to cart"
+      flash[:status] = :success
+      flash[:result_text] = "Successfully added product to cart"
       redirect_to product_path(@product.id)
     else
-      flash[:alert] = "Failed to add to cart"
-      render :show
+      flash[:status] = :failure
+      flash[:result_text] = "Failed to add to cart"
+      # render :show
     end
   end
   private
