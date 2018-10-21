@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
     if @order.nil?
       head :not_found
     end
+  else @order_items = current_order.order_items
   end
 
   def create
