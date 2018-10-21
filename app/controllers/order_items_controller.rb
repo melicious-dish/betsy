@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-
+ # the first time the user adds an order_item to his cart, the new order is persisted to the database. From there on, the order's state is saved every time an order_item is added.
   def create
    @order = current_order
    @order_item = @order.order_items.new(order_item_params)
@@ -25,5 +25,5 @@ class OrderItemsController < ApplicationController
  private
 
  def order_item_params
-   
+
 end
