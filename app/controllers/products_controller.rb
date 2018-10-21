@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   end
 
   def show;
+
   end
 
   def edit
@@ -73,6 +74,19 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_to_order
+    @order_item = OrderItem.new
+    #(order_id: @current_cart.id, product_id: product.id, quantity: params[:order_items][:inventory], status: 'pending')
+    if @order_item.save
+      # product.inventory -= params[:order_products][:inventory].to_i
+      # product.save
+      flash[:success] = "Successfully added product to cart"
+      redirect_to product_path(@product.id)
+    else
+      flash[:alert] = "Failed to add to cart"
+      render :show
+    end
+  end
   private
 
   def product_params

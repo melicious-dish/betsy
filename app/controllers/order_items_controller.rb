@@ -5,6 +5,7 @@ class OrderItemsController < ApplicationController
    @order_item = @order.order_items.new(order_item_params)
    @order.save
    session[:order_id] = @order.id
+   flash[:result_text] = "Successfully created order"
  end
 
  def update
@@ -20,4 +21,9 @@ class OrderItemsController < ApplicationController
    @order_item.destroy
    @order_items = @order.order_items
  end
+
+ private
+
+ def order_item_params
+   
 end

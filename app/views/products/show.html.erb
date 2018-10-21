@@ -30,12 +30,14 @@
 
 <div><strong>Add to Item to Cart</strong>
 
-  <%= form_with model: @product do |f|%>
+  <%= form_with model: @product, url: add_to_order_path(@product.id), method: :get do |f|%>
 
     <%= f.label :quantity%>
     <%= f.select :quantity, (1..10) %>
     <%= f.submit "Submit Quantity" %>
+
   <% end %>
+
 
 </div>
 
