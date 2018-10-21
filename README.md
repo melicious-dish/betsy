@@ -1,3 +1,4 @@
+
 # bEtsy
 [Much like other e-commerce platforms](https://www.etsy.com/), your team will make an online store where a wide variety of products can be listed and sold by any user. This project focuses on reinforcing the major components of Rails, model validations, testing, and more complex logic such as user authentication.
 
