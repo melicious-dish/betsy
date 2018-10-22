@@ -4,6 +4,13 @@ describe ProductsController do
   # it "must be a real test" do
   #   flunk "Need real tests"
   # end
+  describe "index" do
+
+    it 'can display all products' do
+      get products_path
+      must_respond_with :success
+    end
+  end
 
   describe "create" do
 
@@ -49,6 +56,66 @@ describe ProductsController do
 
       must_respond_with :bad_request
     end
+  end
+
+  describe 'update' do
+
+    it 'can update a product if a logged in user' do
+      @login_user = Merchant.first
+      product = Product.first
+
+      product_hash = {
+        product: {
+          name: 'Practical Object Oriented Programming in Ruby',
+          price: 20,
+          description: 'A look at how to design object-oriented systems',
+          photo_url: 'test url',
+          status: true,
+          inventory: 1
+        }
+      }
+
+      patch product_path(product.id), params: product_hash
+      must_respond_with :success
+
+
+    end
+
+    it 'will not update a product if not logged in' do
+      product = Product.first
+      product_hash = {
+        product: {
+          name: 'Practical Object Oriented Programming in Ruby',
+          price: 20,
+          description: 'A look at how to design object-oriented systems',
+          photo_url: 'test url',
+          status: true,
+          inventory: 1
+        }
+      }
+
+      patch product_path(product.id), params: product_hash
+      must_respond_with :failure
+
+
+    end
+  end
+
+  describe 'show' do
+
+      it 'can display a product details page' do
+        product = Product.first
+
+        get product_path(product.id)
+        must_respond_with :success
+      end
+
+      it 'returns not found if invalid id' do
+
+        get product_path(0)
+        must_respond_with :not_found
+      end
 
   end
+
 end

@@ -26,4 +26,6 @@ class OrderItemsController < ApplicationController
 
  def order_item_params
 
+ end
+ 
 end

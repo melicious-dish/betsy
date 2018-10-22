@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :products, include: [:index, :show, :create]
   end
 
-  resources :products, only: [:index, :new, :create, :edit, :show]
+  resources :products, only: [:index, :new, :create, :edit, :show, :update]
 
 
 
