@@ -1,0 +1,7 @@
+<ul>
+  <% @categories.each do |category| %>
+  <li>
+    <h5><%= link_to "#{category.category_name}", category_products_path(category[:id]) %></h5>
+  </li>
+  <% end %>
+</ul>
