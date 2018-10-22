@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/product/:id/add_to_order', to: 'products#add_to_order', as: 'add_to_order'
 
-  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "sessions#create", as: 'auth_callback'
 
   delete "/logout", to: "sessions#destroy", as: "logout"
 
