@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
       if @product.save
         flash[:status] = :success
         flash[:result_text] = "Successfully created
-        #{@product}"
+        #{@product.name}"
         redirect_to product_path(@product)
         # debugger
       else
