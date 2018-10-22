@@ -31,7 +31,7 @@ describe Merchant do
     it 'requires a unique username' do
       mars = merchants(:mars)
       saturn = merchants(:saturn)
-      saturn.username = "mars"
+      saturn.username = mars.username
 
       expect(saturn.valid?).must_equal false
       expect(saturn.errors.messages).must_include :username
