@@ -2,11 +2,21 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update]
 
   def index
-    @products = Product.all
+    if params[:merchant_id]
+      merchant = Merchant.find_by(id: params[:merchant_id])
+      @products = merchant.products
+
+    elsif params[:category_id]
+      category = Category.find_by(id: params[:category_id])
+      @products = category.products
+    else
+      @products = Product.all
+    end
   end
 
   def new
     @product = Product.new
+    @order_item = current_order.order_items.new
   end
 
   def create
@@ -35,6 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def show;
+
   end
 
   def edit
@@ -72,6 +83,21 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_to_order
+    @order_item = OrderItem.new
+    #(order_id: @current_cart.id, product_id: product.id, quantity: params[:order_items][:inventory], status: 'pending')
+    if @order_item.save
+      # product.inventory -= params[:order_products][:inventory].to_i
+      # product.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully added product to cart"
+      redirect_to product_path(@product.id)
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Failed to add to cart"
+      # render :show
+    end
+  end
   private
 
   def product_params
