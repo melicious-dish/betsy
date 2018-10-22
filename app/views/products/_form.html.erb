@@ -1,6 +1,6 @@
 <section>
   <%= form_with model: @product do |f| %>
-  
+
 
     <div class="form-group">
       <%= f.label :name %>
@@ -20,6 +20,11 @@
     <div class="form-group">
       <%= f.label :inventory %>
       <%= f.text_area :inventory, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, Product.get_categories, {}, :multiple => true, class: "form-control" %>
     </div>
 
     <div class="form-group">
