@@ -18,6 +18,28 @@ class OrdersController < ApplicationController
   end
 
   def create
+
+    # #TODO: translate into strong params
+    # @order_item = OrderItem.new(product_id: params[:product_id].to_i, quantity: params[:quantity].to_i, order_id: params[:order_id])
+    # # order_id = OrderItem.add_order_item_to_order(@order_item)
+    # # @order_item.order_id = order_id
+    #
+    # # TODO: add if/else or model method to check against + edit product inventory
+    #
+    # result = @order_item.save
+    #
+    # if result
+    #   flash[:status] = :success
+    #   flash[:result_text] = "Successfully created
+    #   order item"
+    # else
+    #   flash[:status] = :failure
+    #   flash[:result_text] = "DID NOT create order item #{order_id}"
+    #   flash[:messages] = @order_item.errors.messages
+    # end
+    # redirect_back(fallback_location: root_path)
+
+
     if sessions[:order_id] ==
     @order = Order.new #(params)
     @order_category = @order.category
