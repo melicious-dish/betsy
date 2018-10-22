@@ -35,6 +35,8 @@ class ProductsController < ApplicationController
         render :new
       end
     end
+
+
     if !@login_user
       flash[:status] = :failure
       flash[:result_text] = "Could not create #{@product}"
@@ -57,7 +59,7 @@ class ProductsController < ApplicationController
       flash[:status] = :failure
       flash[:result_text] = "You must log in to update #{@product}"
       flash[:messages] = @product.errors.messages
-      redirect_back fallback_location: root_path
+      redirect_back fallback_location: root_path, status: :bad_request
       return
     end
 
@@ -100,10 +102,11 @@ class ProductsController < ApplicationController
       # render :show
     end
   end
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :photo_url, :status, :inventory)
+      params.require(:product).permit(:name, :price, :description, :photo_url, :status, :inventory)
   end
 
   def find_product

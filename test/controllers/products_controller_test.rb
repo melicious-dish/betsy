@@ -1,4 +1,5 @@
 require "test_helper"
+require 'pry'
 
 describe ProductsController do
   # it "must be a real test" do
@@ -15,6 +16,10 @@ describe ProductsController do
   describe "create" do
 
     it "can create a product" do
+      mercury = merchants(:mercury)
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( mercury ) )
+      get auth_callback_path(:github)
+
       product_hash = {
         product: {
           name: 'Practical Object Oriented Programming in Ruby',
@@ -45,7 +50,6 @@ describe ProductsController do
 
       product_hash = {
         product: {
-          name: 'Practical Object Oriented Programming in Ruby',
           price: 20,
           description: 'A look at how to design object-oriented systems',
           photo_url: 'test url',
@@ -58,7 +62,8 @@ describe ProductsController do
         post products_path, params: product_hash
       }.wont_change 'Product.count'
 
-      must_respond_with :bad_request
+      must_respond_with :success
+
     end
   end
 
