@@ -6,24 +6,32 @@
 #
 readables:
   category_name: readables
+  products: poodr
 
 wearables:
   category_name: wearables
+  products: onesie1, snuggie
 
 cozyables:
   category_name: cozyables
+  products: snuggie
 
 snackables:
   category_name: snackables
+  products: koolaid
 
 hairables:
   category_name: hairables
+  products: wig1
 
 plantables:
   category_name: plantables
+  products: houseplant1
 
 houseables:
   category_name: houseables
+  products: lamp
 
 beautifiables:
   category_name: beautifiables
+  products: nailpolish1
