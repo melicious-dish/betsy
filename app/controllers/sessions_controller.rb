@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   def create
     auth_hash = request.env['omniauth.auth']
     merchant = Merchant.find_by(uid: auth_hash[:uid], provider: 'github')
+
     if merchant
       # User was found in the database
       flash[:status] = "success"
       flash[:result_text] = "Logged in as returning merchant #{merchant.username}"
-      flash[:messages] = merchant.errors.messages
 
     else
       # User doesn't match anything in the DB
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       if merchant.save
         flash[:status] = "success"
         flash[:result_text] = "Logged in as new merchant #{merchant.username}"
-        flash[:messages] = merchant.errors.messages
+        # flash[:messages] = merchant.errors.messages
 
       else
         # Couldn't save the user for some reason. If we
@@ -30,18 +30,18 @@ class SessionsController < ApplicationController
         flash[:messages] = merchant.errors.messages
 
         redirect_to root_path
-
+        return
       end
     end
 
     # If we get here, we have a valid user instance
-    session[:username] = merchant.id
+    session[:merchant_id] = merchant.id
     redirect_to root_path
   end
 
 
   def destroy
-    session[:username] = nil
+    session[:merchant_id] = nil
     flash[:result_text] = "Successfully logged out!"
 
     redirect_to root_path

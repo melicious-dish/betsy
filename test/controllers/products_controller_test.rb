@@ -39,6 +39,10 @@ describe ProductsController do
 
 
     it "will not create a product with invalid params" do
+      mercury = merchants(:mercury)
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( mercury ) )
+      get auth_callback_path(:github)
+
       product_hash = {
         product: {
           name: 'Practical Object Oriented Programming in Ruby',
@@ -60,7 +64,13 @@ describe ProductsController do
 
   describe 'update' do
 
-    it 'can update a product if a logged in user' do
+    it 'can update a product if logged in' do
+
+      mercury = merchants(:mercury)
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( mercury ) )
+      get auth_callback_path(:github)
+
+
       @login_user = Merchant.first
       product = Product.first
 
@@ -76,7 +86,7 @@ describe ProductsController do
       }
 
       patch product_path(product.id), params: product_hash
-      must_respond_with :success
+      must_respond_with :found
 
 
     end
@@ -95,7 +105,7 @@ describe ProductsController do
       }
 
       patch product_path(product.id), params: product_hash
-      must_respond_with :failure
+      must_respond_with :bad_request
 
 
     end

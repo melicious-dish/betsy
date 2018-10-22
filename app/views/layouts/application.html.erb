@@ -13,7 +13,7 @@
 
   <header class="app-header__header">
     <h1>
-      <%= link_to "REDSIE", root_path %>
+      <%= link_to "REDSY", root_path %>
     </h1>
 
   <nav class="app-header__nav">
@@ -46,7 +46,7 @@
 
 
       <li>
-        <% if session[:username] %>
+        <% if session[:merchant_id] %>
         <li class="nav-item app-header__nav_item">
         <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
             </li>

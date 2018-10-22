@@ -8,9 +8,7 @@ describe SessionsController do
   it "can successfully log in with github as an existing merchant" do
     # Arrange
     # make sure that for some existing merchant, everything is configured!
-
     mercury = merchants(:mercury)
-
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( mercury ) )
 
     # Act
@@ -18,28 +16,24 @@ describe SessionsController do
     get auth_callback_path(:github)
 
     # Assert
-
     must_redirect_to root_path
     expect(session[:merchant_id]).must_equal mercury.id
-    expect(flash[:success]).must_equal "Logged in as existing merchant #{mercury.username}"
+    expect(flash[:status]).must_equal "success"
 
   end
 
   it "creates a new user successfully when logging in with a new valid merchant" do
 
     start_count = Merchant.count
-
     new_merchant = Merchant.new(username: "new user", email: "some email", uid: 3, provider: :github)
 
     # if new_merchant is not valid, then this test isn't testing the right thing
     expect(new_merchant.valid?).must_equal true
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( new_merchant ) )
-
     get auth_callback_path(:github)
 
     must_redirect_to root_path
-    # binding.pry
     expect( Merchant.count ).must_equal start_count + 1
     expect( session[:merchant_id] ).must_equal Merchant.last.id
   end
