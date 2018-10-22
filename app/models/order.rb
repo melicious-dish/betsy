@@ -1,11 +1,15 @@
 class Order < ApplicationRecord
-  # QUESTION: does this cover the entirety of the "must have one or many"??
+  # TODO: decide/add more validations+testing (cc info, mailing address, etc)
   has_many :order_items
 
+<<<<<<< HEAD
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 
 
+=======
+
+>>>>>>> fd59ac9934c35fe77e79cbbc6d9279fe3d84aa22
   #
   # def total_price
   #   total = 0

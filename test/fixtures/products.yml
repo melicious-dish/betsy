@@ -8,6 +8,7 @@ poodr:
   status: true
   inventory: 1
   merchant: jupiter
+  categories: readables
 
 koolaid:
   name: koolaid
@@ -17,6 +18,7 @@ koolaid:
   status: true
   inventory: 100
   merchant: mercury
+  categories: snackables
 
 wig1:
   name: wig1
@@ -26,6 +28,7 @@ wig1:
   status: true
   inventory: 100
   merchant: saturn
+  categories: hairables
 
 houseplant1:
   name: houseplant1
@@ -35,6 +38,7 @@ houseplant1:
   status: true
   inventory: 0
   merchant: saturn
+  categories: plantables
 
 lamp:
   name: lamp
@@ -44,6 +48,7 @@ lamp:
   status: true
   inventory: 50
   merchant: mars
+  categories: houseables
 
 nailpolish1:
   name: nailpolish1
@@ -53,6 +58,7 @@ nailpolish1:
   status: true
   inventory: 2
   merchant: saturn
+  categories: beautifiables
 
 onesie1:
   name: onesie1
@@ -62,6 +68,7 @@ onesie1:
   status: true
   inventory: 5
   merchant: mars
+  categories: wearables
 
 snuggie:
   name: snuggie
@@ -71,3 +78,4 @@ snuggie:
   status: true
   inventory: 44
   merchant: jupiter
+  categories: wearables, cozyables
