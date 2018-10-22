@@ -26,10 +26,7 @@
 
 <div><strong>Categories:</strong>
   <% @product.categories.each do |c| %>
-  <%= c.category_name %>
-  <% @product.categories.each do |c| %>
-  <%= c.category_name %>
-  <% end %>
+  <%= link_to c.category_name, category_product_path(c.id) %>
   <% end %>
 </div>
 
