@@ -25,7 +25,9 @@
 
 
 <div><strong>Categories:</strong>
-  <%= %>
+  <% @product.categories.each do |c| %>
+  <%= link_to c.category_name, category_product_path(c.id) %>
+  <% end %>
 </div>
 
 <div><strong>Add to Item to Cart</strong>
@@ -33,7 +35,7 @@
   <%= form_with model: @order_item, url: product_order_items_create_path(@product.id), method: :post do |f|%>
 
     <%= f.label :quantity%>
-    <%= f.select :quantity, (1..10) %>
+    <%= f.select :quantity, (1..@product.inventory) %>
     <%= f.submit "Submit Quantity" %>
 
   <% end %>
