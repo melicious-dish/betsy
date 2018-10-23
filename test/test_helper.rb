@@ -45,4 +45,16 @@ class ActiveSupport::TestCase
       }
     }
   end
+
+  def login_test_user
+    mercury = merchants(:mercury)
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new( mock_auth_hash( mercury ) )
+    get auth_callback_path(:github)
+  end
+
+  def logout_test_user
+     OmniAuth.config.mock_auth[:github] = nil
+     get logout_path
+  end
+
 end
