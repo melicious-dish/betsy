@@ -44,7 +44,9 @@
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>
-      Delete/Discontinue???
+      <%= link_to "Delete", product_path(product.id), method: :delete, data: {
+        confirm: "Are you sure you want to delete this entry #{product.name}?" }, class: "btn btn-danger" %>
+
     </td>
   </tr>
   <% end %>
