@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
     #     # flash[:messages] = @order.errors.messages
     #     # render :new, status: :bad_request
     #   end
-=======
+
     if sessions[:order_id] ==
     @order = Order.new #(params)
     @order_category = @order.category
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
         # render :new, status: :bad_request
       end
     end
->>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
+
   end
 
   def edit
