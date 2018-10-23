@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -17,6 +20,51 @@
 /* Import scss content */
 @import "**/*";
 
+body {
+text-transform:capitalize;
+background-color: #B1B3B5;
+font-family: 'Quicksand', sans-serif;
+
+}
+
+li {
+  list-style: none;
+}
+
+
+.header{
+ background-image: url('http://www.printawallpaper.com/upload/designs/red_diamond_detail.jpg');
+ background-attachment: fixed;
+ background-size: cover;
+ background-position: center;
+ font-family: 'Love Ya Like A Sister', cursive;
+
+}
+
+.logo {
+  text-align: center;
+  font-weight: 600;
+  font-size: 10em;
+  letter-spacing: .2em;
+}
+
+.nav-app-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+a:visited{
+  color: #F7EBE8;
+}
+a:link{
+  color: #F7EBE8;
+}
+a:hover{
+  color: #E54B4B;
+  text-decoration: none;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -25,7 +73,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #FFE5E7;
+    background-color: #292F36;
     min-width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 36px;
