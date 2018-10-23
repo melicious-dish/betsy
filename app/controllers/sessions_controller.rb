@@ -39,9 +39,8 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-
   def destroy
-    session[:merchant_id] = nil
+    session.delete(:merchant_id)
     flash[:result_text] = "Successfully logged out!"
 
     redirect_to root_path

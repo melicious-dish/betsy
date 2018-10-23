@@ -5,6 +5,13 @@ describe ProductsController do
   # it "must be a real test" do
   #   flunk "Need real tests"
   # end
+
+  it "must be valid" do
+    product = Product.first
+    result = product.valid?
+    result.must_equal true
+  end
+  
   describe "index" do
 
     it 'can display all products' do

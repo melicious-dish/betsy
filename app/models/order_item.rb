@@ -4,13 +4,10 @@ class OrderItem < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { greater_than: 0, only_integer: true }
 
-<<<<<<< HEAD
   # validate :product_present
   # validate :order_present
-=======
   # TODO: change from true/false to pending etc. [this will cause errors i think until we can coordinate it]
   validates :shipped, inclusion: { in: [true, false] }
->>>>>>> fd59ac9934c35fe77e79cbbc6d9279fe3d84aa22
 
   # NOTE: <MC> The two lines below made the model tests fail </MC>
   # validate :product_present
