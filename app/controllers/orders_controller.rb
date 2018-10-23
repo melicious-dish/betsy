@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.find_by(id: session[:order_id])
+    
+    if session[:merchant]
+      merchant_id = session[:merchant]['id']
+      @orders = Merchant.find(merchant_id).orders
+    end
+
   end
 
   def new
@@ -13,8 +19,9 @@ class OrdersController < ApplicationController
   def show
     if @order.nil?
       head :not_found
+    else @order_items = current_order.order_items
     end
-  else @order_items = current_order.order_items
+
   end
 
   def create
@@ -55,6 +62,22 @@ class OrdersController < ApplicationController
     #     # flash[:messages] = @order.errors.messages
     #     # render :new, status: :bad_request
     #   end
+=======
+    if sessions[:order_id] ==
+    @order = Order.new #(params)
+    @order_category = @order.category
+      if @order.save
+        flash[:status] = :success
+        # flash[:result_text] = "Successfully created order"
+        # redirect_to
+      else
+        flash[:status] = :failure
+        # flash[:result_text] = "Could not create order"
+        # flash[:messages] = @order.errors.messages
+        # render :new, status: :bad_request
+      end
+    end
+>>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
   end
 
   def edit
@@ -68,6 +91,7 @@ class OrdersController < ApplicationController
       head :not_found
     end
   end
+
   def destroy
     if @order.nil?
       head :not_found
@@ -86,6 +110,5 @@ class OrdersController < ApplicationController
   def find_order
     @order = Order.find_by(id: params[:id])
   end
-
 
 end

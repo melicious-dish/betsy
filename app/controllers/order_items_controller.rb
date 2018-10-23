@@ -12,7 +12,7 @@ class OrderItemsController < ApplicationController
     #TODO: translate into strong params
 
     @order_item = OrderItem.new(product_id: params[:product_id].to_i, quantity: params[:quantity].to_i, order_id: current_order)
-    session[:order_id] = @order_item.order.id
+        session[:order_id] = @order_item.order.id
     # order_id = OrderItem.add_order_item_to_order(@order_item)
     # @order_item.order_id = order_id
 
@@ -23,7 +23,7 @@ class OrderItemsController < ApplicationController
     if result
       flash[:status] = :success
       flash[:result_text] = "Successfully created
-      order item #{@order_item.product.name}. Your order ID is: #{@order_item.order.id} and session ID is #{session[:order_id]}"
+      order item #{@order_item.product.name}. Your order ID is: #{@order_item.order.id} and session ID is #{session[:order_id]} and order item id is #{@order_item.id}"
 
     else
       flash[:status] = :failure
@@ -51,13 +51,16 @@ class OrderItemsController < ApplicationController
   # end
 
 
-  private
+  # private
   #
   # def order_item_params
   #   params.require(:order_items).permit(:product_id, :quantity)
   # end
 
+<<<<<<< HEAD
  # end
+=======
+>>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
 
 
 end
