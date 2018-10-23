@@ -18,6 +18,7 @@
 
   <nav class="app-header__nav">
     <ul class="nav app-header__site-nav-container">
+
       <li class="nav-item app-header__nav_item">
         <%= link_to "Shop All Products", products_path, class: "nav-link" %>
       </li>
@@ -36,8 +37,16 @@
 
 
 
-      <li class="nav-item app-header__nav_item">
-        <%= link_to "Shop By Category", merchants_path, class: "nav-link" %>
+        <div class="dropdown">
+        <span><%= link_to "Shop By Category", categories_path, class: "nav-link" %></span>
+        <div class="dropdown-content">
+          <% Category.all.each do |category| %>
+         <li><%= link_to category.category_name, category_path(category.id) %></li>
+         <% end %>
+       </div>
+     </div>
+
+
       </li>
       <li class="nav-item app-header__nav_item">
         <%= link_to "Cart", orders_path, class: "nav-link" %>
