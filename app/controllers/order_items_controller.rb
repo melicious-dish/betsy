@@ -57,8 +57,8 @@ class OrderItemsController < ApplicationController
   #   params.require(:order_items).permit(:product_id, :quantity)
   # end
 
-
  # end
+
 
 
 end

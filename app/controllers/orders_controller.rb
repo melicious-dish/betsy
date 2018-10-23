@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.find_by(id: session[:order_id])
-    
+
     if session[:merchant]
       merchant_id = session[:merchant]['id']
       @orders = Merchant.find(merchant_id).orders
@@ -62,7 +62,6 @@ class OrdersController < ApplicationController
     #     # flash[:messages] = @order.errors.messages
     #     # render :new, status: :bad_request
     #   end
-
     if sessions[:order_id] ==
     @order = Order.new #(params)
     @order_category = @order.category
@@ -77,7 +76,6 @@ class OrdersController < ApplicationController
         # render :new, status: :bad_request
       end
     end
-
   end
 
   def edit
