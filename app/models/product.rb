@@ -16,9 +16,5 @@ class Product < ApplicationRecord
   # QUESTION: how to handle invalid photo URLS since that will 'show up' ??
   # QUESTION: status default --> true?? to show it's automatically active?
 
-  CATEGORIES = Category.all.map { |category| category.category_name }
-
-  def self.get_categories
-    return CATEGORIES
-  end
+  
 end
