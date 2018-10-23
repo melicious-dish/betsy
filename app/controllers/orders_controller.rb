@@ -62,6 +62,10 @@ class OrdersController < ApplicationController
     #     # flash[:messages] = @order.errors.messages
     #     # render :new, status: :bad_request
     #   end
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     if sessions[:order_id] ==
     @order = Order.new #(params)
     @order_category = @order.category
@@ -76,6 +80,10 @@ class OrdersController < ApplicationController
         # render :new, status: :bad_request
       end
     end
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   end
 
   def edit

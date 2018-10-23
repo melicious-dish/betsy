@@ -1,5 +1,10 @@
 <h2>Merchant Index Page!</h2>
 
-This will display all of the merchants.<br>
 
-<%= link_to "All Categories", products_path %>
+<ul>
+  <% Merchant.all.each do |merchant| %>
+  <li>
+    <h5><%= link_to "#{merchant.username}", merchant_products_path(merchant[:id]) %></h5>
+  </li>
+  <% end %>
+</ul>
