@@ -1,10 +1,21 @@
-<h2>List of Products</h2>
+<% if params[:category_id] %>
+<h2>List of Products: <%= Category.find(params[:category_id]).category_name.capitalize %>
+  <% elsif params[:merchant_id] %>
+  <h2><%= Merchant.find(params[:merchant_id]).username %>'s shop </h2>
+<% else %>
+<h2>Products/All</h2>
+
+<% end %></h2>
+
+
+
 
 <ul>
   <% @products.each do |p| %>
   <li>
+
     <strong>
-      <%= p.name %>
+      <%= link_to "#{p.name}", product_path(p.id) %>
       <%= p.price.to_f.round(2) %>
     </strong>
 
@@ -18,4 +29,5 @@
     <%=  %>
   </div>
   <% end %>
+
 </ul>
