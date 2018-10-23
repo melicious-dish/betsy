@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
 
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
-  # IDEA: INSTEAD OF ORDER_ITEMS PATH ON PRODUCT SHOW PAGE, MAKE IT A PATH TO CREATE OR UPDATE THE ORDER -- AND HAVE A METHOD WHERE WE CAN ADD IN EACH ORDER_ITEM (ORDER_ITEMS NEED THE ID OF BOTH AN ORDER AND A PRODUCT)
   def index
+    @orders = Order.find_by(id: session[:order_id])
   end
 
   def new
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
   def create
 
-    
+
 
     # #TODO: translate into strong params
     # @order_item = OrderItem.new(product_id: params[:product_id].to_i, quantity: params[:quantity].to_i, order_id: params[:order_id])

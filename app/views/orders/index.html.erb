@@ -1,1 +1,60 @@
 <h2>Orders Index page</h2>
+
+
+<h3>Products</h3>
+<table>
+  <thead>
+    <td>
+      Image?
+    </td>
+    <td>
+      Item Name
+    </td>
+    <td>
+      Unit Price
+    </td>
+    <td>
+      Quantity
+    </td>
+    <td>
+      Edit/Delete?
+    </td>
+    <td>
+      Subtotal
+    </td>
+  </thead>
+  <tbody>
+
+<!-- QUESTION: render partial the repeated code below to DRY it up? -->
+<% @orders.order_items.each do |order_items| %>
+  <tr>
+    <td>
+
+    </td>
+    <td>
+      <%= link_to order_items.product.name, product_path(order_items.product.id) %>
+    </td>
+    <td>
+      <!-- TODO: do some work to display it nicely -->
+      <%= order_items.product.price %>
+    </td>
+    <td>
+      <%= order_items.quantity %>
+    </td>
+
+    <td>
+      Edit/Delete
+    </td>
+    <!-- TODO: decide if link here should change column from true to false -->
+    <td>
+      Subtotal
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td>
+      TOTAL
+    </td>
+  </tr>
+</tbody>
+</table>
