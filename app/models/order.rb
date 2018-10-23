@@ -5,8 +5,6 @@ class Order < ApplicationRecord
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 
-
-
   #
   # def total_price
   #   total = 0
