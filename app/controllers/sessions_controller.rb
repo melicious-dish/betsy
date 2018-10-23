@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:merchant_id)
+    flash[:status] = "success"
     flash[:result_text] = "Successfully logged out!"
 
     redirect_to root_path
