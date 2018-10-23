@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
-<<<<<<< HEAD
     @orders = Order.find_by(id: session[:order_id])
     
     if session[:merchant]
@@ -26,7 +25,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
 
 
 
