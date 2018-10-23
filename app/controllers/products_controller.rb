@@ -56,10 +56,6 @@ class ProductsController < ApplicationController
 
   def update
     if @login_user
-      # merchant_id = @login_user.id
-      # @login_user = @merchant.product.id
-      @product = Product.new(product_params)
-      @product.merchant_id = @login_user.id
 
       if @product.update(product_params)
         flash[:status] = :success
@@ -75,6 +71,20 @@ class ProductsController < ApplicationController
 
     end
   end
+
+  def destroy
+    if @login_user
+
+      product = Product.find_by(id: params[:id])
+
+      product.destroy
+
+      flash[:status] = :success
+      flash[:result_text] = "Successfully deleted product #{product.name}"
+      redirect_to merchant_path(@login_user)
+    end
+  end
+
 
   def add_to_order
     @order_item = OrderItem.new
