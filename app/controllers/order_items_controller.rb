@@ -12,7 +12,7 @@ class OrderItemsController < ApplicationController
     #TODO: translate into strong params
 
     @order_item = OrderItem.new(product_id: params[:product_id].to_i, quantity: params[:quantity].to_i, order_id: current_order)
-        session[:order_id] = @order_item.order.id
+    session[:order_id] = @order_item.order.id
     # order_id = OrderItem.add_order_item_to_order(@order_item)
     # @order_item.order_id = order_id
 
@@ -34,6 +34,23 @@ class OrderItemsController < ApplicationController
 
   end
 
+  def update
+    @order_item = OrderItem.find_by(id: params[:order_item_id])
+
+    @order_item.update(quantity: params[:quantity])
+
+    if @order_item.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully updated order item: #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Did not update order item: #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    end
+    redirect_to orders_path
+
+  end
   # NOTE: actions below are for order... should instead be for order_item?
 
   # def update
@@ -50,6 +67,21 @@ class OrderItemsController < ApplicationController
   #   @order_items = @order.order_items
   # end
 
+  def destroy
+    @order_item = OrderItem.find_by(id: params[:id])
+
+    result = @order_item.destroy
+
+    if result
+      flash[:status] = :success
+      flash[:result_text] = "Successfully destroyed item: #{@order_item.product.name}"
+      redirect_to orders_path
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Did not delete #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    end
+  end
 
   # private
   #

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   resources :orders
 
-  resources :order_items, include: [:show, :edit, :delete]
+  resources :order_items, include: [:show, :delete]
+
+  put '/update_order_item', to: 'order_items#update', as: 'order_items_update'
+
 
 
   resources :categories do
