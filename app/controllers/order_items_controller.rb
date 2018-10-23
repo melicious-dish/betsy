@@ -35,14 +35,17 @@ class OrderItemsController < ApplicationController
   end
 
   def update
+    @order_item = OrderItem.find_by(id: params[:order_item_id])
+
     @order_item.update(quantity: params[:quantity])
+
     if @order_item.save
       flash[:status] = :success
-      flash[:result_text] = "Successfully updated order item"
+      flash[:result_text] = "Successfully updated order item: #{@order_item.product.name}"
       flash[:messages] = @order_item.errors.messages
     else
       flash[:status] = :failure
-      flash[:result_text] = "Did not update order item"
+      flash[:result_text] = "Did not update order item: #{@order_item.product.name}"
       flash[:messages] = @order_item.errors.messages
     end
     redirect_to orders_path

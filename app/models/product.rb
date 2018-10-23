@@ -16,5 +16,21 @@ class Product < ApplicationRecord
   # QUESTION: how to handle invalid photo URLS since that will 'show up' ??
   # QUESTION: status default --> true?? to show it's automatically active?
 
-  
+  # NOTE: may need to move
+  # def reduce_inventory(order_item)
+  #   product = order_item.product
+  #   inventory = product.inventory
+  #
+  #   quantity = order_item.quantity
+  #
+  #   difference = inventory - quantity
+  #
+  #   if  difference >= 0
+  #     inventory = difference
+  #     inventory.save
+  #   else
+  #     raise ArguementError, "Guest cannot purchase more inventory than is available"
+  #   end
+  # end
+
 end
