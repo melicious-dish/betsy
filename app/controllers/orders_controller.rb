@@ -3,12 +3,16 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
+    if session[:merchant]
+      merchant_id = session[:merchant]['id']
+      @orders = Merchant.find(merchant_id).orders
+    end 
   end
 
   def new
     @order = Order.new
   end
- # add @order_items 
+ # add @order_items
   def show
     if @order.nil?
       head :not_found
