@@ -51,13 +51,16 @@ class OrderItemsController < ApplicationController
   # end
 
 
-  private
+  # private
   #
   # def order_item_params
   #   params.require(:order_items).permit(:product_id, :quantity)
   # end
 
+<<<<<<< HEAD
  # end
+=======
+>>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
 
 
 end
