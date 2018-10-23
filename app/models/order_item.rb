@@ -6,6 +6,7 @@ class OrderItem < ApplicationRecord
 
   # validate :product_present
   # validate :order_present
+
   # TODO: change from true/false to pending etc. [this will cause errors i think until we can coordinate it]
   validates :shipped, inclusion: { in: [true, false] }
 
