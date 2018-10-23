@@ -26,34 +26,34 @@
   <tbody>
 
 <!-- QUESTION: render partial the repeated code below to DRY it up? -->
-<% @orders.order_items.each do |order_items| %>
+<% @orders.order_items.each do |order_item| %>
   <tr>
     <td>
 
     </td>
     <td>
-      <%= link_to order_items.product.name, product_path(order_items.product.id) %>
+      <%= link_to order_item.product.name, product_path(order_item.product.id) %>
     </td>
     <td>
       <!-- TODO: do some work to display it nicely -->
-      <%= order_items.product.price %>
+      <%= order_item.product.price %>
     </td>
     <td>
-      <%= order_items.quantity %>
+      <%= order_item.quantity %>
     </td>
 
     <td>
-      <%= form_with model: @order_item, url: order_items_update_path(order_items.id), method: :put do |f|%>
+      <%= form_with model: @order_item, url: order_items_update_path(order_item.id), method: :put do |f|%>
 
         <%= f.label :quantity%>
-        <%= f.select :quantity, (1..order_items.product.inventory) %>
+        <%= f.select :quantity, (1..order_item.product.inventory) %>
         <%= f.submit "Edit" %>
 
       <% end %>
 
     </td>
     <td>
-      Remove from cart
+      <%= link_to 'Remove from Cart', order_item_path(order_item.id), method: :delete, data: { confirm: "Are you sure you want to delete item:  #{order_item.product.name}?" } %>
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>

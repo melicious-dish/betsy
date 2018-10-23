@@ -35,7 +35,16 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    @order_item.update_attributes(params[:quantity])
+    @order_item.update(quantity: params[:quantity])
+    if @order_item.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully updated order item"
+      flash[:messages] = @order_item.errors.messages
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Did not update order item"
+      flash[:messages] = @order_item.errors.messages
+    end
     redirect_to orders_path
 
   end
@@ -55,6 +64,21 @@ class OrderItemsController < ApplicationController
   #   @order_items = @order.order_items
   # end
 
+  def destroy
+    @order_item = OrderItem.find_by(id: params[:id])
+
+    result = @order_item.destroy
+
+    if result
+      flash[:status] = :success
+      flash[:result_text] = "Successfully destroyed item: #{@order_item.product.name}"
+      redirect_to orders_path
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Did not delete #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    end
+  end
 
   # private
   #
