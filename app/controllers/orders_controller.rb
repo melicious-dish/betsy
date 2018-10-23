@@ -19,12 +19,7 @@ class OrdersController < ApplicationController
 
   def create
 
-    current_order
-
-
-
-
-
+    
 
     # #TODO: translate into strong params
     # @order_item = OrderItem.new(product_id: params[:product_id].to_i, quantity: params[:quantity].to_i, order_id: params[:order_id])

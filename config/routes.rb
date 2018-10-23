@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :products, only: [:index, :new, :create, :edit, :show] do
-    post '/create_order', to: 'orders#create', as: 'create_order'
+    post '/create_order_item', to: 'order_items#create', as: 'create_order_item'
   end
 
 
