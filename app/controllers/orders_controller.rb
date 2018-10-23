@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     if session[:merchant]
       merchant_id = session[:merchant]['id']
       @orders = Merchant.find(merchant_id).orders
-    end 
+    end
   end
 
   def new
@@ -17,23 +17,25 @@ class OrdersController < ApplicationController
   def show
     if @order.nil?
       head :not_found
+    else @order_items = current_order.order_items
     end
-  else @order_items = current_order.order_items
+
   end
 
   def create
     if sessions[:order_id] ==
     @order = Order.new #(params)
     @order_category = @order.category
-    if @order.save
-      flash[:status] = :success
-      # flash[:result_text] = "Successfully created order"
-      # redirect_to
-    else
-      flash[:status] = :failure
-      # flash[:result_text] = "Could not create order"
-      # flash[:messages] = @order.errors.messages
-      # render :new, status: :bad_request
+      if @order.save
+        flash[:status] = :success
+        # flash[:result_text] = "Successfully created order"
+        # redirect_to
+      else
+        flash[:status] = :failure
+        # flash[:result_text] = "Could not create order"
+        # flash[:messages] = @order.errors.messages
+        # render :new, status: :bad_request
+      end
     end
   end
 
@@ -47,24 +49,25 @@ class OrdersController < ApplicationController
     if @order.nil?
       head :not_found
     end
-
-    def destroy
-      if @order.nil?
-        head :not_found
-      end
-      #if @order.destroy
-      #redirect_to orders_path
-      #else
-      #render :show
-      #end
-    end
-
-    private
-
-
-
-    def find_order
-      @order = Order.find_by(id: params[:id])
-    end
   end
+
+  def destroy
+    if @order.nil?
+      head :not_found
+    end
+    #if @order.destroy
+    #redirect_to orders_path
+    #else
+    #render :show
+    #end
+  end
+
+  private
+
+
+
+  def find_order
+    @order = Order.find_by(id: params[:id])
+  end
+
 end

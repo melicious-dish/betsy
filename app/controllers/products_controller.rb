@@ -55,14 +55,24 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      flash[:status] = :success
-      flash[:result_text] = "Successfully updated product #{@product.name}"
-      redirect_to product_path(@product.id)
+    if @login_user
+      # merchant_id = @login_user.id
+      # @login_user = @merchant.product.id
+      @product = Product.new(product_params)
+      @product.merchant_id = @login_user.id
+
+      if @product.update(product_params)
+        flash[:status] = :success
+        flash[:result_text] = "Successfully updated product #{@product.name}"
+        redirect_to product_path(@product.id)
+      else
+        flash[:status] = :failure
+        flash[:result_text] = "Failed to update"
+        render :edit, status: :bad_request
+      end
     else
-      flash[:status] = :failure
-      flash[:result_text] = "Failed to update"
-      render :edit
+      redirect_back fallback_location: root_path, status: :bad_request
+
     end
   end
 
