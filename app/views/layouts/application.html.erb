@@ -11,43 +11,34 @@
 
   <body>
 
-  <header class="app-header__header">
-    <h1>
+  <header class="header">
+    <h1 class="logo">
       <%= link_to "REDSY", root_path %>
     </h1>
 
-  <nav class="app-header__nav">
-    <ul class="nav app-header__site-nav-container">
-
+  <nav class="navigation">
+    <ul class="nav-app-header">
       <li class="nav-item app-header__nav_item">
         <%= link_to "Shop All Products", products_path, class: "nav-link" %>
       </li>
-        <div class="dropdown">
+      <div class="dropdown">
         <span><%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %></span>
-        <div class="dropdown-content">
-          <% Merchant.all.each do |merchant| %>
-         <li><%= link_to merchant.username, merchant_path(merchant.id) %></li>
-         <% end %>
+          <div class="dropdown-content">
+            <% Merchant.all.each do |merchant| %>
+              <li><%= link_to merchant.username, merchant_path(merchant.id) %></li>
+            <% end %>
+         </div>
        </div>
 
-
-         </div>
-        </div>
+      <div class="dropdown">
+        <span><%= link_to "Shop By Category", categories_path, class: "nav-link" %></span>
+          <div class="dropdown-content">
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.category_name, category_path(category.id) %></li>
+            <% end %>
+          </div>
       </div>
 
-
-
-        <div class="dropdown">
-        <span><%= link_to "Shop By Category", categories_path, class: "nav-link" %></span>
-        <div class="dropdown-content">
-          <% Category.all.each do |category| %>
-         <li><%= link_to category.category_name, category_path(category.id) %></li>
-         <% end %>
-       </div>
-     </div>
-
-
-      </li>
       <li class="nav-item app-header__nav_item">
         <%= link_to "Cart", orders_path, class: "nav-link" %>
       </li>
@@ -55,20 +46,20 @@
 
       <li>
         <% if session[:merchant_id] %>
-        <li class="nav-item app-header__nav_item">
-        <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
-            </li>
-
           <li class="nav-item app-header__nav_item">
-            <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-primary"   %>
-          </li>
+          <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
+              </li>
+          <li class="nav-item app-header__nav_item">
+              <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-primary"   %>
+            </li>
         <% else %>
           <li class="nav-item app-header__nav_item">
             <%= link_to "Login with Github", "/auth/github", class: "btn btn-primary"  %>
           </li>
         <% end %>
       </li>
-      </ul>
+    </ul>
+  </nav>
 
     <% if flash[:result_text] or flash[:messages] %>
     <section class="alert__container">
@@ -86,6 +77,7 @@
       </div>
     </section>
     <% end %>
+</header>
 
   <main>
     <%= yield %>
