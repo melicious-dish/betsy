@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :orders
 
+  resources :order_items, include: [:show, :edit, :delete]
+
 
   resources :categories do
     resources :products, include: [:index, :show, :create]
