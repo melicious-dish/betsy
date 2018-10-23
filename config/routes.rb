@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy", as: "logout"
 
+
   resources :orders
 
 
@@ -19,7 +20,12 @@ Rails.application.routes.draw do
     resources :products, include: [:index, :show, :create]
   end
 
-  resources :products, only: [:index, :new, :create, :edit, :show, :update]
+
+  resources :products, only: [:index, :new, :create, :edit, :show] do
+    post '/add_order_item', to: 'order_items#create', as: 'order_items_create'
+  end
+
+
 
 
 
