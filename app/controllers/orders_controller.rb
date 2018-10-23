@@ -91,10 +91,7 @@ class OrdersController < ApplicationController
       head :not_found
     end
   end
-<<<<<<< HEAD
-=======
 
->>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
   def destroy
     if @order.nil?
       head :not_found
@@ -114,8 +111,4 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5c1da7aa571fbd073d0969b611afe22a8e4d8ffb
 end
