@@ -43,7 +43,17 @@
     </td>
 
     <td>
-      Edit/Delete
+      <%= form_with model: @order_item, url: order_items_update_path(order_items.id), method: :put do |f|%>
+
+        <%= f.label :quantity%>
+        <%= f.select :quantity, (1..order_items.product.inventory) %>
+        <%= f.submit "Edit" %>
+
+      <% end %>
+
+    </td>
+    <td>
+      Remove from cart
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>
