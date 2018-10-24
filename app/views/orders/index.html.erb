@@ -14,10 +14,13 @@
       Unit Price
     </td>
     <td>
-      Quantity
+      Current Quantity
     </td>
     <td>
-      Edit/Delete?
+      Update Quantity
+    </td>
+    <td>
+      Remove
     </td>
     <td>
       Subtotal
@@ -29,7 +32,7 @@
 <% @orders.order_items.each do |order_item| %>
   <tr>
     <td>
-
+      img
     </td>
     <td>
       <%= link_to order_item.product.name, product_path(order_item.product.id) %>
@@ -57,13 +60,25 @@
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>
-      Subtotal
+      <%= order_item.order_item_subtotal %>
     </td>
   </tr>
   <% end %>
   <tr>
     <td>
-      TOTAL
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+      TOTAL: <%= @orders.order_total %>
     </td>
   </tr>
 </tbody>
