@@ -1,7 +1,7 @@
 <h2>Orders</h2>
 
 <!-- QUESTION: is this the best way to do this? To show an empty vs non-empty cart? -->
-<% if @orders.empty_cart? %>
+<% if  !@orders || @orders.empty_cart? %>
 <h3>Cart is empty!</h3>
 
 <% else %>
