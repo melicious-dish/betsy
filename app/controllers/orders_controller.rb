@@ -94,12 +94,16 @@ class OrdersController < ApplicationController
     result = @order.save
 
     if result
-      
-      new_order = Order.new
-      session[:order_id] = new_order.id
+
+      # new_order = Order.new
+      # session[:order_id] = new_order.id
+
+      # create_new_cart_upon_submit()
+
+      set_new_session_order_id()
 
       flash[:status] = :success
-      flash[:result_text] = "Order #{@order.id} successfully paid - #{@order.payment_status} and email #{@order.guest_email} id #{@order.id}}"
+      flash[:result_text] = "Order #{@order.id} successfully paid!"
     else
       flash[:status] = :failure
       flash[:result_text] = "Experiencing an issue with order #{@order.id}."
@@ -144,4 +148,15 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:guest_email, :guest_mailing, :guest_cc_name, :guest_cc_num, :guest_cc_exp_date, :guest_cc_cvv_code, :guest_cc_zip)
   end
 
+
+  # if guest has submitted an order, then we start a new cart tied to a new session id
+  def create_new_cart_upon_submit()
+    new_order = Order.create()
+    return new_order
+  end
+
+  def set_new_session_order_id()
+    new_order = create_new_cart_upon_submit()
+    session[:order_id] = new_order.id
+  end
 end
