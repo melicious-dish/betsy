@@ -18,16 +18,13 @@ class Order < ApplicationRecord
     return total_as_float
   end
 
-  # if guest has submitted an order, then we start a new cart tied to a new session id
-  # def self.create_new_cart_upon_submit()
-  #   new_order = Order.create()
-  #   return new_order
-  # end
-  #
-  # def self.set_new_session_order_id()
-  #   new_order = create_new_cart_upon_submit()
-  #   session[:order_id] = new_order.id
-  # end
+# TODO: reduce all these dependencies; sro!
+  def decrement_inventory_via_order()
+    self.order_items.each do |order_item|
+      order_item.decrement_inventory_via_order_item()
+    end
+  end
+
 
 
   private

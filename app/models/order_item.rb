@@ -15,4 +15,33 @@ class OrderItem < ApplicationRecord
     return price * quantity
   end
 
+  def decrement_inventory_via_order_item()
+    product = self.product
+    inventory = product.inventory
+
+    quantity = self.quantity
+
+    difference = inventory - quantity
+
+    if  difference < 0
+      raise ArguementError, "Guest cannot purchase more inventory than is available"
+      # QUESTION: add flash messages? rescue?
+    end
+
+    product[:inventory] = difference
+    result = product.save
+
+    if result
+      p "great"
+      # QUESTION: add flash messages?
+    else
+      raise ArguementError, "Unable to alter product inventory"
+      # QUESTION: add flash messages? rescue?
+    end
+
+  end
+
+
+
+
 end
