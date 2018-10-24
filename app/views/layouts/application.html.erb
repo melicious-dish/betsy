@@ -48,7 +48,7 @@
       <li>
         <% if session[:merchant_id] %>
           <li class="nav-item app-header__nav_item">
-          <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
+          <%= link_to "My Account", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
               </li>
           <li class="nav-item app-header__nav_item">
               <%= link_to "Log out", logout_path, method: "delete", id: "session", class: "btn btn-primary"   %>
