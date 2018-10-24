@@ -1,10 +1,19 @@
+<section class="category-title">
 <h2>Category Index Page!</h2>
+</section>
 
 
-<ul>
+
+<container>
+<p></p>
+<ul class="grid-container">
   <% @categories.each do |category| %>
-  <li>
+  <li class="grid-item">
+    <strong>
+      <div class="container">
     <h5><%= link_to "#{category.category_name}", category_products_path(category[:id]) %></h5>
+  </strong>
   </li>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+  </container>
