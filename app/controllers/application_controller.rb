@@ -44,6 +44,4 @@ class ApplicationController < ActionController::Base
       @login_user = Merchant.find_by(id: session[:merchant_id])
     end
   end
-
-
 end
