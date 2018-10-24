@@ -1,1 +1,46 @@
-<h2>Order Show Page</h2>
+<h2> Merchant Summary: </h2>
+
+<tbody>
+  <% if @login_user != nil %>
+  <table>
+    <thead>
+      <td>
+    <th>Total Revenue: $</th>
+    </td>
+    <td>
+      by status Paid: $
+    </td>
+    <td>
+      by status Completed: $
+    </td>
+  </table>
+
+<br>
+
+  <table>
+    <td>
+      <th>Total Orders: </th>
+    </td>
+    <td>
+      Orders Paid:
+    </td>
+    <td>
+      Orders Completed:
+    </td>
+  </table>
+
+<br>
+
+  <table>
+    <td>
+      <th>Filter by Status: All Orders --toggle-- </th>
+    </td>
+    <td>
+      Paid:
+    </td>
+    <td>
+      Complete:
+    </td>
+  </table>
+  <% end %>
+</tbody>
