@@ -6,6 +6,10 @@ class Order < ApplicationRecord
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 
 
+  def empty_cart?()
+    return self.order_items.nil? || self.order_items.empty?
+  end
+
   def order_total()
     total_as_float = self.order_items.sum do |order_item|
       order_item.order_item_subtotal()

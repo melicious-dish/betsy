@@ -1,5 +1,10 @@
-<h2>Orders Index page</h2>
+<h2>Orders</h2>
 
+<!-- QUESTION: is this the best way to do this? To show an empty vs non-empty cart? -->
+<% if @orders.empty_cart? %>
+<h3>Cart is empty!</h3>
+
+<% else %>
 
 <h3>Products</h3>
 <table>
@@ -83,3 +88,13 @@
   </tr>
 </tbody>
 </table>
+
+<div>
+  <%= link_to 'Proceed to Checkout', new_order_path %>
+</div>
+
+<div>
+  Remove all items / Clear Cart?
+</div>
+
+<% end %>
