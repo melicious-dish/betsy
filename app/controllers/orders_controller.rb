@@ -17,10 +17,10 @@ class OrdersController < ApplicationController
   end
   # add @order_items
   def show
-    if @order.nil?
-      head :not_found
-    else @order_items = current_order.order_items
-    end
+    # if @order.nil? || !@order.order_items
+    #   head :not_found
+    # else @order_items = current_order.order_items
+    # end
 
   end
 
@@ -62,20 +62,53 @@ class OrdersController < ApplicationController
     #     # flash[:messages] = @order.errors.messages
     #     # render :new, status: :bad_request
     #   end
-    if sessions[:order_id] ==
-    @order = Order.new #(params)
-    @order_category = @order.category
-      if @order.save
-        flash[:status] = :success
-        # flash[:result_text] = "Successfully created order"
-        # redirect_to
-      else
-        flash[:status] = :failure
-        # flash[:result_text] = "Could not create order"
-        # flash[:messages] = @order.errors.messages
-        # render :new, status: :bad_request
-      end
+
+    # NOTE: <mc> I commented the code below out b/c it threw errors </mc>
+    # if sessions[:order_id] ==
+    # @order = Order.new #(params)
+    # @order_category = @order.category
+    #   if @order.save
+    #     flash[:status] = :success
+    #     # flash[:result_text] = "Successfully created order"
+    #     # redirect_to
+    #   else
+    #     flash[:status] = :failure
+    #     # flash[:result_text] = "Could not create order"
+    #     # flash[:messages] = @order.errors.messages
+    #     # render :new, status: :bad_request
+    #   end
+    # end
+
+    @order = Order.find_by(id: session[:order_id])
+
+    if !@order
+      flash[:status] = :failure
+      flash[:result_text] = "No order found"
+      flash[:messages] = @order_item.errors.messages
     end
+
+    @order.update(order_params)
+
+    @order[:payment_status] = "paid"
+
+    result = @order.save
+
+    if result
+      
+      new_order = Order.new
+      session[:order_id] = new_order.id
+
+      flash[:status] = :success
+      flash[:result_text] = "Order #{@order.id} successfully paid - #{@order.payment_status} and email #{@order.guest_email} id #{@order.id}}"
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Experiencing an issue with order #{@order.id}."
+      flash[:messages] = @order.errors.messages
+    end
+
+
+    redirect_to root_path
+
   end
 
   def edit
@@ -103,10 +136,12 @@ class OrdersController < ApplicationController
 
   private
 
-
-
   def find_order
     @order = Order.find_by(id: params[:id])
+  end
+
+  def order_params
+      params.require(:order).permit(:guest_email, :guest_mailing, :guest_cc_name, :guest_cc_num, :guest_cc_exp_date, :guest_cc_cvv_code, :guest_cc_zip)
   end
 
 end
