@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   # Deleted/inactive products aren't shown
   default_scope { where(status: true) }
 
+  validates :inventory, presence: true, numericality: { greater_than: -1 }
+
 
 
   # QUESTION: how to handle invalid photo URLS since that will 'show up' ??
