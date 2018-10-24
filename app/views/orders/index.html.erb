@@ -1,5 +1,10 @@
-<h2>Orders Index page</h2>
+<h2>Orders</h2>
 
+<!-- QUESTION: is this the best way to do this? To show an empty vs non-empty cart? -->
+<% if  !@orders || @orders.empty_cart? %>
+<h3>Cart is empty!</h3>
+
+<% else %>
 
 <h3>Products</h3>
 <table>
@@ -14,10 +19,13 @@
       Unit Price
     </td>
     <td>
-      Quantity
+      Current Quantity
     </td>
     <td>
-      Edit/Delete?
+      Update Quantity
+    </td>
+    <td>
+      Remove
     </td>
     <td>
       Subtotal
@@ -29,14 +37,14 @@
 <% @orders.order_items.each do |order_item| %>
   <tr>
     <td>
-
+      img
     </td>
     <td>
       <%= link_to order_item.product.name, product_path(order_item.product.id) %>
     </td>
     <td>
       <!-- TODO: do some work to display it nicely -->
-      <%= order_item.product.price %>
+      <%= number_to_currency((order_item.product.price_int_to_float), precision: 2) %>
     </td>
     <td>
       <%= order_item.quantity %>
@@ -57,14 +65,36 @@
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>
-      Subtotal
+      <%= number_to_currency(order_item.order_item_subtotal, precision: 2) %>
     </td>
   </tr>
   <% end %>
   <tr>
     <td>
-      TOTAL
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+      TOTAL: <%= number_to_currency(@orders.order_total, precision: 2) %>
     </td>
   </tr>
 </tbody>
 </table>
+
+<div>
+  <%= link_to 'Proceed to Checkout', new_order_path %>
+</div>
+
+<div>
+  Remove all items / Clear Cart?
+</div>
+
+<% end %>
