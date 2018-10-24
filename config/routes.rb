@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
 
   resources :orders do
-    resources :merchants, include: [:index, :show]
   end
 
   resources :order_items, include: [:show, :delete]
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :merchants do
     resources :products, include: [:index, :show, :create]
+    resources :orders, include: [:index, :show]
   end
 
 
