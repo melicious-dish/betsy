@@ -39,7 +39,7 @@
     </td>
     <td>
       <!-- TODO: do some work to display it nicely -->
-      <%= order_item.product.price %>
+      <%= number_to_currency((order_item.product.price_int_to_float), precision: 2) %>
     </td>
     <td>
       <%= order_item.quantity %>
@@ -60,7 +60,7 @@
     </td>
     <!-- TODO: decide if link here should change column from true to false -->
     <td>
-      <%= order_item.order_item_subtotal %>
+      <%= number_to_currency(order_item.order_item_subtotal, precision: 2) %>
     </td>
   </tr>
   <% end %>
@@ -78,7 +78,7 @@
     <td>
     </td>
     <td>
-      TOTAL: <%= @orders.order_total %>
+      TOTAL: <%= number_to_currency(@orders.order_total, precision: 2) %>
     </td>
   </tr>
 </tbody>

@@ -7,11 +7,11 @@ class Order < ApplicationRecord
 
 
   def order_total()
-    total = self.order_items.sum do |order_item|
+    total_as_float = self.order_items.sum do |order_item|
       order_item.order_item_subtotal()
     end
 
-    return total
+    return total_as_float
   end
 
 

@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   default_scope { where(status: true) }
 
 
-  # QUESTION: user will likely input a float --> so we will need to change it into an int b/c it'll be stored as an int in the db
+
   # QUESTION: how to handle invalid photo URLS since that will 'show up' ??
   # QUESTION: status default --> true?? to show it's automatically active?
 
@@ -32,5 +32,10 @@ class Product < ApplicationRecord
   #     raise ArguementError, "Guest cannot purchase more inventory than is available"
   #   end
   # end
+
+  def price_int_to_float()
+    return convert_int_to_f(self.price)
+  end
+
 
 end
