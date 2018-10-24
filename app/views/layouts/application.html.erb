@@ -26,7 +26,7 @@
         <span><%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %></span>
           <div class="dropdown-content">
             <% Merchant.all.each do |merchant| %>
-              <li><%= link_to merchant.username, merchant_path(merchant.id) %></li>
+              <li><%= link_to merchant.username, merchant_products_path(merchant.id) %></li>
             <% end %>
          </div>
        </div>
@@ -35,7 +35,7 @@
         <span><%= link_to "Shop By Category", categories_path, class: "nav-link" %></span>
           <div class="dropdown-content">
             <% Category.all.each do |category| %>
-              <li><%= link_to category.category_name, category_path(category.id) %></li>
+              <li><%= link_to category.category_name, category_products_path(category[:id]) %></li>
             <% end %>
           </div>
       </div>

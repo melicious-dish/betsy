@@ -1,10 +1,18 @@
+<section class="merchant-title">
 <h2>Merchant Index Page!</h2>
+</section>
 
 
-<ul>
+<container>
+<p></p>
+<ul class="grid-container">
   <% Merchant.all.each do |merchant| %>
-  <li>
+  <li class="grid-item">
+    <strong>
+      <div class="container">
     <h5><%= link_to "#{merchant.username}", merchant_products_path(merchant.id) %></h5>
-  </li>
+</strong>
+</li>
   <% end %>
 </ul>
+</container>

@@ -90,6 +90,10 @@ a:hover {
   text-decoration: none;
 }
 
+#logo-hover a:hover {
+  background-image:url("sparkle.gif");
+}
+
 #session {
   background-color: #FFFFFF;
 }

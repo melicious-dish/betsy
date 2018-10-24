@@ -1,33 +1,28 @@
+<section class="product-title">
 <% if params[:category_id] %>
-<h2>List of Products: <%= Category.find(params[:category_id]).category_name.capitalize %>
-  <% elsif params[:merchant_id] %>
-  <h2><%= Merchant.find(params[:merchant_id]).username %>'s shop </h2>
-<% else %>
-<h2>Products/All</h2>
-
-<% end %></h2>
-
-
-
-
-<ul>
-  <% @products.each do |p| %>
-  <li>
-
-    <strong>
-      <%= link_to "#{p.name}", product_path(p.id) %>
-      <%= p.price.to_f.round(2) %>
-    </strong>
-
-    <div>
-
-    </div>
-
-  </li>
-
-  <div><strong>Add to Item to Cart</strong>
-    <%=  %>
-  </div>
+  <h2>List of Products: <%= Category.find(params[:category_id]).category_name.capitalize %>
+    <% elsif params[:merchant_id] %>
+    <h2><%= Merchant.find(params[:merchant_id]).username %>'s shop </h2>
+  <% else %>
+  <h2>Products/All</h2>
   <% end %>
+</section>
 
+<container>
+<p></p>
+<ul class="grid-container">
+  <% @products.each do |p| %>
+  <li class="grid-item">
+    <strong>
+      <div class="container">
+      <%= link_to image_tag("americat2.jpg"), product_path(p.id), class: "image"%>
+      </div>
+      <div></div>
+      <%= link_to "#{p.name}", product_path(p.id) %>
+      <div></div>
+      <%= "$#{p.price.to_f.round(2)}" %>
+    </strong>
+  </li>
+  <% end %>
 </ul>
+</container>

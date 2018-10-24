@@ -1,50 +1,52 @@
-<h2>Product Details</h2>
+<section class="product-title">
+  <h2>Product Details</h2>
+</section>
 
-<h4><strong><%= @product.name %></strong></h4>
-
-
-<div><strong>Price:$</strong>
-  <%= @product.price %>
-</div>
-
-<div><strong>Description:</strong>
-  <%= @product.description %>
-</div>
-
-<div><strong>Rating:</strong>
-  <%= %>
-</div>
-
-<div><strong>Reviews:</strong>
-  <%= %>
-</div>
-
-<div><strong>Seller:</strong>
-  <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %>
-</div>
-
-
-<div><strong>Categories:</strong>
-  <% @product.categories.each do |c| %>
-  <%= link_to c.category_name, category_products_path(c.id) %>
-  <% end %>
-</div>
-
-<div><strong>Add to Item to Cart</strong>
-
-  <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
-
-    <%= f.label :quantity%>
-    <%= f.select :quantity, (1..@product.inventory) %>
-    <%= f.submit "Add Item to Cart" %>
-
-  <% end %>
-
-
-</div>
-
-<div><strong>Inventory:</strong>
-
-  <div><strong><%= link_to "Back to All Products", products_path %></strong>
-
+<section class="show-grid-container">
+  <div class="show-grid-image">
+    <%= image_tag "americat2.jpg", class: "show-image" %>
   </div>
+
+  <div class="show-grid-details">
+    <h4>
+      <strong>
+        <%= @product.name %>
+      </strong>
+    </h4>
+
+    <div>
+      <strong>Price:$</strong>
+        <%= @product.price %>
+    </div>
+
+    <div><strong>Seller:</strong>
+      <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %>
+    </div>
+
+    <div>
+    <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
+      <%= f.label :quantity%>
+      <%= f.select :quantity, (1..@product.inventory) %><br>
+      <%= f.submit "Add Item to Cart" %>
+      <% end %>
+
+
+  <div><strong>Description:</strong>
+    <%= @product.description %>
+  </div>
+
+  <div><strong>Categories:</strong>
+    <% @product.categories.each do |c| %>
+    <%= link_to c.category_name, category_products_path(c.id) %>
+    <% end %>
+  </div>
+</div>
+    <div><strong>Rating Summary:</strong>
+      <%= %>
+    <div><strong>Reviews:</strong>
+      <%= %>
+    </div>
+  </div>
+</div>
+</div>
+</section>

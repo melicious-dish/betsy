@@ -2,7 +2,6 @@
 
 order1:
   payment_status: pending
-  clear_cart: false
   fulfillment_status: pending
   guest_email: person@person.com
   guest_mailing: 123 somewhere st.
@@ -14,7 +13,6 @@ order1:
 
 order2:
   payment_status: paid
-  clear_cart: false
   fulfillment_status: complete
   guest_email: me@wnbc.net
   guest_mailing: 321 somewhere sq.
@@ -26,7 +24,6 @@ order2:
 
 order3:
   payment_status: pending
-  clear_cart: false
   fulfillment_status: pending
   guest_email: herc@hercules.org
   guest_mailing: 1 highline st.
@@ -39,7 +36,6 @@ order3:
 
 order4:
   payment_status: pending
-  clear_cart: false
   fulfillment_status: pending
   guest_email: person@person.com
   guest_mailing: 123 somewhere st.
