@@ -27,42 +27,86 @@ font-family: 'Quicksand', sans-serif;
 
 }
 
+main {
+  padding: 2rem;
+}
+
 li {
   list-style: none;
 }
 
 
 .header{
- background-image: url('http://www.printawallpaper.com/upload/designs/red_diamond_detail.jpg');
- background-attachment: fixed;
- background-size: cover;
- background-position: center;
+ background-color: #FFFFFF;
+ // background-attachment: fixed;
+ // background-size: cover;
+ // background-position: center;
  font-family: 'Love Ya Like A Sister', cursive;
+ padding: 2rem 2rem .1rem 2rem;
 
+}
+
+#logo-hover:hover a {
+  color:#EA1300;
 }
 
 .logo {
-  text-align: center;
+  text-align: left;
   font-weight: 600;
-  font-size: 10em;
+  font-size: 7em;
   letter-spacing: .2em;
+  margin-bottom: .4em;
 }
+
+.little-header {
+  font-size: 50px;
+  color: #292F36;
+}
+// .logo:hover {
+//   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+// }
 
 .nav-app-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-direction: row;
 }
 
-a:visited{
-  color: #F7EBE8;
+.app-header__nav_item {
+  padding-left: 20px;
 }
-a:link{
-  color: #F7EBE8;
-}
-a:hover{
+
+a:visited {
   color: #E54B4B;
+
+}
+a:link {
+  color: #E54B4B;
+
+}
+a:hover {
+  color: #292F36;
+  transition: .6s;
   text-decoration: none;
+}
+
+#session {
+  background-color: #FFFFFF;
+}
+
+#session:hover {
+  color: #292F36;
+  border: #292F36 solid 1px;
+}
+
+.btn-primary {
+  background-color: #EA1300;
+  border: 1px #E54B4B solid;
+}
+
+.btn-primary:hover {
+  background-color: #EA1300;
+  border: 1px #EA1300 solid;
 }
 
 .dropdown {
@@ -73,14 +117,13 @@ a:hover{
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #292F36;
+    background-color: #FFF;
     min-width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 36px;
     z-index: 1;
     font-weight: bold;
     white-space: nowrap;
-
 }
 
 .dropdown:hover .dropdown-content {
