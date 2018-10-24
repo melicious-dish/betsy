@@ -1,3 +1,73 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-title {
+  text-align: center;
+}
+
+/*---------------------- PRODUCT LIST ----------------------------*/
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  justify-content: center;
+  grid-column-gap: 50px;
+  grid-row-gap: 25px;
+  align-self: auto;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 50;
+  border: 2px solid black ;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  margin: 0;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.6;
+}
+
+/*---------------------- PRODUCT DETAILS ----------------------------*/
+
+.show-grid-container {
+  display: flex;
+  justify-content: center;
+  grid-column-gap: 25px;
+  align-self: auto;
+}
+
+
+.show-grid-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+.show-grid-image img {
+  width: auto;
+
+}
