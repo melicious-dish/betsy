@@ -12,9 +12,10 @@
   <body>
 
   <header class="header">
-    <h1 class="logo">
-      <%= link_to "REDSY", root_path %>
-    </h1>
+  <h1 id="logo-hover" class="logo">
+    <%= link_to "REDSY", root_path %><span class="little-header">...all things red</span>
+  </h1>
+
 
   <nav class="navigation">
     <ul class="nav-app-header">
@@ -47,14 +48,14 @@
       <li>
         <% if session[:merchant_id] %>
           <li class="nav-item app-header__nav_item">
-          <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), class: "btn btn-primary" %>
+          <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
               </li>
           <li class="nav-item app-header__nav_item">
-              <%= link_to "Log out", logout_path, method: "delete", class: "btn btn-primary"   %>
+              <%= link_to "Log out", logout_path, method: "delete", id: "session", class: "btn btn-primary"   %>
             </li>
         <% else %>
           <li class="nav-item app-header__nav_item">
-            <%= link_to "Login with Github", "/auth/github", class: "btn btn-primary"  %>
+            <%= link_to "Login with Github", "/auth/github", id: "session", class: "btn btn-primary"  %>
           </li>
         <% end %>
       </li>
