@@ -95,12 +95,9 @@ class OrdersController < ApplicationController
 
     if result
 
-      # new_order = Order.new
-      # session[:order_id] = new_order.id
-
-      # create_new_cart_upon_submit()
-
+      @order.decrement_inventory_via_order()
       set_new_session_order_id()
+
 
       flash[:status] = :success
       flash[:result_text] = "Order #{@order.id} successfully paid!"
@@ -148,6 +145,8 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:guest_email, :guest_mailing, :guest_cc_name, :guest_cc_num, :guest_cc_exp_date, :guest_cc_cvv_code, :guest_cc_zip)
   end
 
+
+  # QUESTION: should these be moved to the model?
 
   # if guest has submitted an order, then we start a new cart tied to a new session id
   def create_new_cart_upon_submit()
