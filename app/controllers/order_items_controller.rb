@@ -1,12 +1,6 @@
 class OrderItemsController < ApplicationController
-  # the first time the user adds an order_item to his cart, the new order is persisted to the database. From there on, the order's state is saved every time an order_item is added.
-  #  def create
-  #   @order_item = current_order
-  #   @order_item = @order.order_items.new(order_item_params)
-  #   @order.save
-  #   session[:order_id] = @order.id
-  #   flash[:result_text] = "Successfully created order"
-  # end
+
+
 
   def create
     #TODO: translate into strong params
