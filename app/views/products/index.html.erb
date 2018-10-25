@@ -15,7 +15,7 @@
   <li class="grid-item">
     <strong>
       <div class="container">
-      <%= link_to image_tag("americat2.jpg"), product_path(p.id), class: "image"%>
+      <%= link_to image_tag("#{p.photo_url}"), product_path(p.id), class: "image"%>
       </div>
       <div></div>
       <%= link_to "#{p.name}", product_path(p.id) %>
