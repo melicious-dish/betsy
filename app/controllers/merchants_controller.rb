@@ -10,7 +10,6 @@ class MerchantsController < ApplicationController
   end
 
   def order_summary
-    puts params[:merchant_id]
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
   end
 
