@@ -16,6 +16,7 @@
   grid-column-gap: 50px;
   grid-row-gap: 25px;
   align-self: auto;
+  margin: 4em
 }
 
 .grid-item img {
@@ -84,4 +85,10 @@
   margin: -10px auto;
   padding: 50px;
 
+}
+
+
+.add-cart {
+  background-color: #F97A74 !important;
+  border: 1px #292F36 solid;
 }
