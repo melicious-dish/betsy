@@ -49,48 +49,36 @@
   <h2>Orders</h2>
 
 <table>
-  <tr>
+  <tr class="order-header">
     <th>Order ID</th>
     <th>Purchase Date</th>
-    <th>Quantity</th>
-    <th>Total</th>
+    <th>Items</th>
+    <th>Payment Status</th>
     <th>Shipped/</th>
-    <th>Status</th>
+
   </tr>
-  <tr>
-    <% @orders.order_items.each do |order_item| %>
+  <% @orders.each do |order| %>
+  <tr class="order-row">
     <td>
-      <%= "@order.id link_to "  %>
+      <%= link_to order.id, order_path(order.id) %>
     </td>
-    <td>"created_at"</td>
-    <td>Germany</td>
+    <td>
+      <%= order.created_at.strftime("%m/%d/%Y") %>
+    </td>
+    <td>
+      <ul class="order-items">
+      <% order.order_items.each do |item| %>
+      <li>
+        <%= item.product.name %>
+        <%= item.quantity %>
+        <%= "$#{item.product.price * item.quantity}" %>
+      </li>
+      <% end %>
+      </ul>
+    </td>
+    <td>
+      <%= order.payment_status %>
+    </td>
   </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-
-
   <% end %>
 </table>
