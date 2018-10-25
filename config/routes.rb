@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :merchants do
     resources :products, include: [:index, :show, :create]
-    resources :orders, include: [:index, :show]
+    get '/order_summary', to: 'merchants#order_summary', as: 'order_summary'
   end
 
 

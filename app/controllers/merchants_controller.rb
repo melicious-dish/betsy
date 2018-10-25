@@ -9,5 +9,8 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
+  def order_summary
+  end
+  
 
 end
