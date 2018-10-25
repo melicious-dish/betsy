@@ -25,7 +25,6 @@ class OrderItemsController < ApplicationController
       flash[:messages] = @order_item.errors.messages
     end
     redirect_back(fallback_location: root_path)
-
   end
 
   def update
