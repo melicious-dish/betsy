@@ -1,10 +1,30 @@
-<<<<<<< HEAD
-<h2>Order Show Page</h2>
+<h2>Thanks for shopping with us!</h2>
 
+
+<h2> Order Details </h2>
+
+<p>Order: #<%=@order.id %> </p>
+<p>Purchased on: <%=@order.created_at.strftime("%m/%d/%Y") %> </p>
+<p>Purchase status: <%=@order.payment_status %> </p>
+<p>Name: <%=@order.guest_cc_name %> </p>
+<p>Shipping address: <%=@order.guest_mailing %> </p>
+<p>Email: <%=@order.guest_email %> </p>
+
+
+
+
+<h2> Products Purchased </h2>
+<table>
+  <thead class="order-header">
+    <td>Product: </td>
+    <td>Price: </th>
+    <td>Quantity: </td>
+  </thead>
 <% @order.order_items.each do |item| %>
-  <%= item.product.name %>
-  <br />
+<tr>
+  <td><%= link_to item.product.name, product_path(item.product.id) %></td>
+  <td><%="$#{item.product.price}" %> </td>
+  <td><%= item.quantity %></td>
+<tr>
 <% end %>
-=======
-<h2> Order Details Page </h2>
->>>>>>> f99cc427bc66de5c47dce4797ccc554dc4db82dc
+</table>
