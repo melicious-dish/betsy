@@ -1,4 +1,4 @@
-<h2> Merchant Summary: </h2>
+<h2> Orders Summary: </h2>
 
 
   <% if @login_user != nil %>
@@ -54,7 +54,7 @@
     <th>Purchase Date</th>
     <th>Items</th>
     <th>Current Status</th>
-    <th>Shipped/</th>
+    <th>Ship Status</th>
 
   </tr>
   <% @orders.each do |order| %>
@@ -79,6 +79,12 @@
     <td>
       <%= order.payment_status %>
     </td>
+    <td>
+      <%= link_to "Mark as shipped", edit_product_path(order.id),
+      class: "btn btn-danger"%>
+    </td>
+
+
   </tr>
   <% end %>
 </table>

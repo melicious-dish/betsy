@@ -13,5 +13,6 @@ class MerchantsController < ApplicationController
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
   end
 
+  
 
 end

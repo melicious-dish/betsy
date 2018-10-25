@@ -71,6 +71,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  # def toggle_enable_status
+  #
+  # end
+
   def destroy
     if @login_user
 
