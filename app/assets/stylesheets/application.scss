@@ -27,18 +27,13 @@ background-color: #fff;
 font-family: 'Quicksand', sans-serif;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 50;
-  padding: 1px;
-  border: 1px solid black ;
-  margin: 0 auto ;
-
+strong {
+  color: #EA1300;
+  font-weight: bold;
 }
 
 footer {
-  color: red;
+  color: #EA1300;
   text-align: center;
 
 }
@@ -54,14 +49,19 @@ li {
   text-align: center;
 }
 
-.header{
- background-color: #FFFFFF;
- font-family: 'Paytone One', sans-serif;
- padding: 2rem 2rem .1rem 2rem;
+.header {
+  color: #EA1300;
+  background-color: #FFFFFF;
+  font-family: 'Paytone One', sans-serif;
+  padding: 2rem 2rem .1rem 2rem;
 
 }
 
 #logo-hover a:visited {
+  color:#EA1300;
+}
+
+#logo-hover a:link {
   color:#EA1300;
 }
 
@@ -108,7 +108,7 @@ a:hover {
 
 #logo-hover a:hover {
   color: #B4231C;
-  background-image:url("Z6W8.gif");
+  background-image:url("red-falling.gif");
 }
 
 #session {
@@ -162,15 +162,17 @@ a:hover {
 
 .carousel {
   overflow: hidden;
-  height: 300px;
-  width: 90em;
-  background-color: black;
+  height: 320px;
+  width: 95em;
+  background-color: white;
   margin: 0 auto ;
-  border: none
+  border: 1px solid #E54B4B ;
+
 }
 
 .carousel img {
-  margin-top: -20%;
+  margin-top: -22%;
+  margin-bottom: auto;
   height: auto;
-  max-width: 100%;
+  width: 100%;
 }
