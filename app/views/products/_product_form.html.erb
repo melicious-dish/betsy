@@ -28,6 +28,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :upload_photo %>
+      <%= f.file_field :photo_url, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
       <%= f.submit action_type, class: "btn btn-primary" %>
     </div>
   <% end %>

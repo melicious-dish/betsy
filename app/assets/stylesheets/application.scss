@@ -108,7 +108,7 @@ a:hover {
 
 #logo-hover a:hover {
   color: #B4231C;
-  background-image:url("Z6W8.gif");
+  background-image:url("red-falling.gif");
 }
 
 #session {
@@ -170,7 +170,11 @@ a:hover {
 }
 
 .carousel img {
-  margin-top: -20%;
+  // margin-top: -20%;
+  // height: auto;
+  // max-width: 100%;
   height: auto;
-  max-width: 100%;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
 }
