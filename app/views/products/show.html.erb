@@ -2,20 +2,19 @@
   <h2>Product Details</h2>
 </section>
 
-<section class="show-grid-container">
-  <div class="show-grid-image">
+<div class="show-grid-container">
+  <section class="show-grid-image">
     <%= image_tag "americat2.jpg", class: "show-image" %>
-  </div>
+    <!-- <%= image_tag @product.photo_url, :size => "400x400", alt:"product image" unless @product.photo_url.blank? %> -->
+  </section>
 
-  <div class="show-grid-details">
+
+  <section class="show-grid-details">
     <h4>
-      <strong>
-        <%= @product.name %>
-      </strong>
+      <strong><%= @product.name %></strong>
     </h4>
 
-    <div>
-      <strong>Price:$</strong>
+    <div><strong>Price:$</strong>
         <%= @product.price %>
     </div>
 
@@ -29,24 +28,27 @@
       <%= f.select :quantity, (1..@product.inventory) %><br>
       <%= f.submit "Add Item to Cart" %>
       <% end %>
+    </div>
 
+    <div><strong>Description:</strong>
+      <%= @product.description %>
+    </div>
 
-  <div><strong>Description:</strong>
-    <%= @product.description %>
-  </div>
-
-  <div><strong>Categories:</strong>
-    <% @product.categories.each do |c| %>
-    <%= link_to c.category_name, category_products_path(c.id) %>
-    <% end %>
-  </div>
+    <div><strong>Categories:</strong>
+      <% @product.categories.each do |c| %>
+      <%= link_to c.category_name, category_products_path(c.id) %>
+      <% end %>
+    </div>
+  </section>
 </div>
+
+  <section class="review-container">
     <div><strong>Rating Summary:</strong>
       <%= %>
+    </div>
     <div><strong>Reviews:</strong>
       <%= %>
     </div>
-  </div>
+  </section>
+
 </div>
-</div>
-</section>
