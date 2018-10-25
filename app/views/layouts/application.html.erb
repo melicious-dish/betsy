@@ -13,7 +13,7 @@
 
   <header class="header">
   <h1 id="logo-hover" class="logo">
-    <%= link_to "REDSY", root_path %><span class="little-header">...all things red</span>
+    <%= link_to "REDSY", root_path %><span class="little-header">All Red, All The Time</span>
   </h1>
 
 
@@ -48,7 +48,7 @@
       <li>
         <% if session[:merchant_id] %>
           <li class="nav-item app-header__nav_item">
-          <%= link_to "Logged in as Merchant: #{@login_user.username}", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
+          <%= link_to "My Account", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
               </li>
           <li class="nav-item app-header__nav_item">
               <%= link_to "Log out", logout_path, method: "delete", id: "session", class: "btn btn-primary"   %>
@@ -86,13 +86,9 @@
 
   </body>
   <footer>
-    <p>
-      ~~~~~~~~~~~<br>
-      This will be the footer area<br>
      <%= link_to "Homepage", root_path %>   |
      <%= link_to "Find An Order", root_path %>   |
      <%= link_to "About Us", root_path %></p>
      <p> Copyright Red Jaguars 2018</p>
-   </p>
   </footer>
 </html>

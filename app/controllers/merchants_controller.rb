@@ -9,4 +9,8 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
+
+  def order_summary
+    @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
+  end
 end

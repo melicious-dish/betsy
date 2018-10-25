@@ -18,12 +18,6 @@
   align-self: auto;
 }
 
-img {
-  max-width: 80%;
-  height: auto;
-  border-radius: 50;
-  border: 2px solid black ;
-}
 
 .image {
   opacity: 1;
@@ -54,20 +48,30 @@ img {
 
 .show-grid-container {
   display: flex;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
-  grid-column-gap: 25px;
+  grid-column-gap: 5px;
   align-self: auto;
 }
-
 
 .show-grid-image {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 30%;
+  padding: 1px;
 }
 
 .show-grid-image img {
-  width: auto;
+  width: 90%;
+  padding: 1px;
+}
+
+.review-container {
+  display: grid;
+  text-align: left;
+  width: 60%;
+  margin: -10px auto;
+  padding: 50px;
 
 }

@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   has_many :reviews
   has_many :order_items
+  # for join table 
+  has_many :orders, through: :order_items
   belongs_to :merchant
   has_and_belongs_to_many :categories
 
@@ -19,7 +21,7 @@ class Product < ApplicationRecord
   # QUESTION: status default --> true?? to show it's automatically active?
 
 
-
+  # QUESTION: should these be view helpers instead?
   def price_int_to_float()
     return convert_int_to_f(self.price)
   end

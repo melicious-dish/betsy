@@ -3,12 +3,13 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.find_by(id: session[:order_id])
 
-    if session[:merchant]
-      merchant_id = session[:merchant]['id']
-      @orders = Merchant.find(merchant_id).orders
-    end
+    @orders = Order.find_by(id: session[:order_id])
+# commented out because it's confusong?
+    # if session[:merchant]
+    #   merchant_id = session[:merchant]['id']
+    #   @orders = Merchant.find(merchant_id).orders
+    # end
 
   end
 
