@@ -32,7 +32,7 @@ wig1:
 
 houseplant1:
   name: houseplant
-  price: 500
+  price: 1500
   description: Cyclamen
   photo_url: https://www.educationquizzes.com/library/Gardening/Houseplants/Cyclamen-C.jpg
   status: true
@@ -52,7 +52,7 @@ lamp:
 
 nailpolish1:
   name: nailpolish
-  price: 1
+  price: 1000
   description: spirit fingers
   photo_url: https://i.imgur.com/Yczg2oF.jpg
   status: true
