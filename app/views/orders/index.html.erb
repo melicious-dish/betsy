@@ -43,7 +43,6 @@
       <%= link_to order_item.product.name, product_path(order_item.product.id) %>
     </td>
     <td>
-      <!-- TODO: do some work to display it nicely -->
       <%= number_to_currency((order_item.product.price_int_to_float), precision: 2) %>
     </td>
     <td>
