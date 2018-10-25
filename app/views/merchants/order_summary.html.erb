@@ -2,6 +2,7 @@
 
 
   <% if @login_user != nil %>
+  <!-- these need to be filtered by revenue, order status, total orders -->
   <table>
     <thead>
       <td>
@@ -80,6 +81,7 @@
       <%= order.payment_status %>
     </td>
     <td>
+      <!-- Shipped button needs to toggle to ship -->
       <%= link_to "Mark as shipped", edit_product_path(order.id),
       class: "btn btn-danger"%>
     </td>

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     post '/add_order_item', to: 'order_items#create', as: 'order_items_create'
+    # route for ship toggle
     #patch '/toggle_enable_status' to: 'toggle_enable_status', as: 'toggle'
   end
 
