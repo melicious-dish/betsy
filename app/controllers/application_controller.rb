@@ -31,11 +31,13 @@ class ApplicationController < ActionController::Base
       # redirect_to root_path
       return ongoing_order.id
     else
+
       flash[:status] = :failure
       flash[:result_text] = "Your order does not exist"
       redirect_to root_path
 
     end
+
   end
 
   private

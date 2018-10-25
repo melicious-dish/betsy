@@ -13,11 +13,10 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
+
   def order_summary
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
   end
-
-  
 
   private
 
@@ -39,5 +38,4 @@ class MerchantsController < ApplicationController
       redirect_to root_path
     end
   end
-
 end
