@@ -9,5 +9,4 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
-
 end

@@ -1,1 +1,6 @@
 <h2>Order Show Page</h2>
+
+<% @order.order_items.each do |item| %>
+  <%= item.product.name %>
+  <br />
+<% end %>

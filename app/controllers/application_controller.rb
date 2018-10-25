@@ -32,10 +32,9 @@ class ApplicationController < ActionController::Base
       # redirect_to root_path
       return ongoing_order.id
     else
-      # TODO: what if not found?
       puts "oh no"
-
     end
+
   end
 
   private

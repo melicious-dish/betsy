@@ -21,7 +21,9 @@ class OrdersController < ApplicationController
     #   head :not_found
     # else @order_items = current_order.order_items
     # end
-
+    flash[:status] = :failure
+    flash[:result_text] = "Access denied."
+    redirect_to root_path
   end
 
   def create
@@ -81,35 +83,33 @@ class OrdersController < ApplicationController
 
     @order = Order.find_by(id: session[:order_id])
 
-    if !@order
+    if @order.nil?
       flash[:status] = :failure
       flash[:result_text] = "No order found"
       flash[:messages] = @order_item.errors.messages
+      redirect_to root_path
+      return
     end
 
     @order.update(order_params)
 
-    @order[:payment_status] = "paid"
+    @order.payment_status = "paid"
 
     result = @order.save
 
     if result
-
       @order.decrement_inventory_via_order()
       set_new_session_order_id()
 
-
       flash[:status] = :success
       flash[:result_text] = "Order #{@order.id} successfully paid!"
+      render :show
     else
       flash[:status] = :failure
       flash[:result_text] = "Experiencing an issue with order #{@order.id}."
       flash[:messages] = @order.errors.messages
+      render :new
     end
-
-
-    redirect_to root_path
-
   end
 
   def edit
