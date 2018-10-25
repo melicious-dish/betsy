@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   # QUESTION: status default --> true?? to show it's automatically active?
 
 
-
+  # QUESTION: should these be view helpers instead?
   def price_int_to_float()
     return convert_int_to_f(self.price)
   end
