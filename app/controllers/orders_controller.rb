@@ -1,14 +1,16 @@
 class OrdersController < ApplicationController
-
   before_action :find_order, only: [:show, :edit, :update, :destroy]
+  before_action :matching_guest, only: [:show]
+
 
   def index
-    @orders = Order.find_by(id: session[:order_id])
 
-    if session[:merchant]
-      merchant_id = session[:merchant]['id']
-      @orders = Merchant.find(merchant_id).orders
-    end
+    @orders = Order.find_by(id: session[:order_id])
+    # commented out because it's confusong?
+    # if session[:merchant]
+    #   merchant_id = session[:merchant]['id']
+    #   @orders = Merchant.find(merchant_id).orders
+    # end
 
   end
 
@@ -142,7 +144,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-      params.require(:order).permit(:guest_email, :guest_mailing, :guest_cc_name, :guest_cc_num, :guest_cc_exp_date, :guest_cc_cvv_code, :guest_cc_zip)
+    params.require(:order).permit(:guest_email, :guest_mailing, :guest_cc_name, :guest_cc_num, :guest_cc_exp_date, :guest_cc_cvv_code, :guest_cc_zip)
   end
 
 
@@ -157,5 +159,16 @@ class OrdersController < ApplicationController
   def set_new_session_order_id()
     new_order = create_new_cart_upon_submit()
     session[:order_id] = new_order.id
+  end
+
+  def matching_guest
+    order_viewing = Order.find_by(id: params[:id])
+
+    if find_order.nil? || find_order.id != order_viewing.id
+      flash[:status] = :failure
+      flash[:result_text] = "Only owner of order #{order_viewing.id} may view this page."
+
+      redirect_to root_path
+    end
   end
 end

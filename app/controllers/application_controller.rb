@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
   before_action :find_merchant
 
   def render_404
@@ -32,15 +31,40 @@ class ApplicationController < ActionController::Base
       # redirect_to root_path
       return ongoing_order.id
     else
+<<<<<<< HEAD
       puts "oh no"
+=======
+      flash[:status] = :failure
+      flash[:result_text] = "Your order does not exist"
+      redirect_to root_path
+
+>>>>>>> f99cc427bc66de5c47dce4797ccc554dc4db82dc
     end
 
   end
 
   private
+
+  # NOTE: can dry the code above private with this
+  def find_order
+    if session[:order_id]
+      @ongoing_order = Order.find_by(id: session[:order_id])
+    end
+  end
+
   def find_merchant
     if session[:merchant_id]
       @login_user = Merchant.find_by(id: session[:merchant_id])
     end
   end
+
+  def require_login
+    if find_merchant.nil?
+      flash[:status] = :failure
+      flash[:result_text] = "You must be a logged in merchant to view this page."
+
+      redirect_to root_path
+    end
+  end
+
 end

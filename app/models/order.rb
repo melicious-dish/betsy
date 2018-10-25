@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   # TODO: decide/add more validations+testing (cc info, mailing address, etc)
   has_many :order_items
+  # for joining products though o_i
+  has_many :products, through: :order_items
 
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)

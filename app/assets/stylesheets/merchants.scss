@@ -17,3 +17,20 @@
   grid-row-gap: 25px;
   align-self: auto;
 }
+
+.order-items {
+  margin-bottom: 0;
+  padding: 0;
+}
+.order-items li {
+  list-style: disc;
+}
+
+.order-row td {
+  padding: 10px 20px;
+  vertical-align: top;
+}
+
+.order-header th {
+  padding: 10px 20px;
+}

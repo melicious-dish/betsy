@@ -4,8 +4,7 @@
 
 <div class="show-grid-container">
   <section class="show-grid-image">
-    <%= image_tag "americat2.jpg", class: "show-image" %>
-    <!-- <%= image_tag @product.photo_url, :size => "400x400", alt:"product image" unless @product.photo_url.blank? %> -->
+    <%= image_tag "#{@product.photo_url}", class: "show-image" %>
   </section>
 
 
@@ -20,7 +19,7 @@
     </div>
 
     <div><strong>Seller:</strong>
-      <%= link_to @product.merchant.username, merchant_path(@product.merchant.id) %>
+      <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %>
     </div>
 
     <div>
