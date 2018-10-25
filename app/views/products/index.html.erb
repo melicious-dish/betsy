@@ -20,7 +20,7 @@
       <div></div>
       <%= link_to "#{p.name}", product_path(p.id) %>
       <div></div>
-      <%= "$#{p.price.to_f.round(2)}" %>
+      <%= number_to_currency(p.price_int_to_float, precision: 2) %>
     </strong>
   </li>
   <% end %>

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy", as: "logout"
 
 
-  resources :orders
+  resources :orders do
+  end
 
   resources :order_items, include: [:show, :delete]
 
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :merchants do
     resources :products, include: [:index, :show, :create]
+    get '/order_summary', to: 'merchants#order_summary', as: 'order_summary'
   end
 
 
