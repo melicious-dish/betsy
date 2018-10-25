@@ -14,8 +14,9 @@
       <strong><%= @product.name %></strong>
     </h4>
 
-    <div><strong>Price:$</strong>
-        <%= @product.price %>
+    <div>
+      <strong>Price:</strong>
+        <%= number_to_currency(@product.price_int_to_float, precision: 2) %>
     </div>
 
     <div><strong>Seller:</strong>
