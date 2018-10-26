@@ -20,15 +20,21 @@ class ReviewsController < ApplicationController
         end
       end
 
-      if @login_user
+
+
+      if @login_user 
+        # && session.id == @product.login_user.id
         flash[:status] = :failure
         flash[:result_text] = "You cannot review your own product."
         # flash[:messages] = @product.errors.messages
         redirect_to product_path(@review.product)
       end
-
   end
 
+  # if find_user && @user.id == @product.user.id
+  #       flash[:status] = :failure
+  #       flash[:result_text] = "Oops..You can't review your own product!"
+  #       redirect_to product_path(@product.id)
 
 
   private
