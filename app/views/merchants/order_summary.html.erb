@@ -5,13 +5,13 @@
   <table>
     <thead>
       <td>
-    <th>Total Revenue: XX$</th>
+    <th>Total Revenue: <%= number_to_currency(@orders.total_revenue, precision: 2) %></th>
     </td>
     <td>
-      by status Paid: XX$
+      by status Paid: <%= number_to_currency(@orders.revenue_by_status("paid"), precision: 2)%>
     </td>
     <td>
-      by status Completed: XX$
+      by status Complete: <%= number_to_currency(@orders.revenue_by_status("complete"), precision: 2)%>
     </td>
   </table>
 
@@ -19,13 +19,13 @@
 
   <table>
     <td>
-      <th>Total Orders: </th>
+      <th>Total Orders: <%= @orders.length %> </th>
     </td>
     <td>
-      Orders Paid:
+      Orders Paid: <%= @orders.total_orders_by_status("paid") %>
     </td>
     <td>
-      Orders Completed:
+      Orders Complete: <%= @orders.total_orders_by_status("complete") %>
     </td>
   </table>
 

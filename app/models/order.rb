@@ -35,6 +35,35 @@ class Order < ApplicationRecord
   #   return all_products_in_order
   # end
 
+def self.find_orders_by_status(status_string)
+    specified_orders = self.where(payment_status: status_string)
+end
+
+def self.total_orders_by_status(status_string)
+  specified_orders = self.find_orders_by_status(status_string)
+
+  orders_count = specified_orders.length
+
+  return orders_count
+end
+
+def self.revenue_by_status(status_string)
+  specified_orders = self.find_orders_by_status(status_string)
+
+  specified_orders.total_revenue
+end
+
+def self.total_revenue()
+  order_items = self.all.map {|order| order.order_items}.flatten
+
+  order_items.sum {|item| item.order_item_subtotal}
+end
+
+# def self.total_revenue()
+#   self.merchant_revenue_by_order_items
+#
+#
+# end
 
 
   private
