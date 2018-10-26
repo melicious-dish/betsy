@@ -22,9 +22,73 @@
 @import "**/*";
 
 body {
+	width: 100wh;
+	height: 90vh;
+	color: #fff;
+	background: linear-gradient(-45deg, #E54B4B, #E54B4B, #F7EBE8, #F72F26);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+
+.welcome {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  text-shadow: 2px 2px grey;
+}
+
+
+h2 {
+  color: #292F36;
+  text-transform:uppercase;
+  letter-spacing: 1em;
+  text-shadow: 2px 2px #B1B3B5;
+}
+
+body {
 text-transform:capitalize;
 background-color: #fff;
 font-family: 'Quicksand', sans-serif;
+
 }
 
 strong {
@@ -33,7 +97,7 @@ strong {
 }
 
 footer {
-  color: #EA1300;
+  color: #923030;
   text-align: center;
 
 }
@@ -70,7 +134,7 @@ li {
   font-weight: 600;
   font-size: 7em;
   letter-spacing: .2em;
-  margin-bottom: .4em;
+  margin-bottom: .25em;
 }
 
 .little-header {
@@ -175,4 +239,15 @@ a:hover {
   margin-bottom: auto;
   height: auto;
   width: 100%;
+}
+
+
+
+.mini-body {
+  color: black;
+  background-color: white;
+    width: 80%;
+    border: 10px solid white;
+    padding: 25px;
+    margin: auto;
 }

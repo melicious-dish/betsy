@@ -1,18 +1,19 @@
+<div class="mini-body">
+
 <section class="product-title">
   <h2>Product Details</h2>
 </section>
-
-<div class="show-grid-container">
+<hr><br>
+  <div class="show-grid-container">
   <section class="show-grid-image">
     <%= image_tag "#{@product.photo_url}", class: "show-image" %>
   </section>
-
 
   <section class="show-grid-details">
     <h4>
       <strong><%= @product.name %></strong>
     </h4>
-
+    <p>
     <div>
       <strong>Price:</strong>
         <%= number_to_currency(@product.price_int_to_float, precision: 2) %>
@@ -21,15 +22,15 @@
     <div><strong>Seller:</strong>
       <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %>
     </div>
-
+    <hr>
     <div>
     <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
       <%= f.label :quantity%>
-      <%= f.select :quantity, (1..@product.inventory) %><br>
-      <%= f.submit "Add Item to Cart" %>
+      <%= f.select :quantity, (1..@product.inventory)  %><br>
+      <%= f.submit "Add Item to Cart", class: "btn btn-primary add-cart" %>
       <% end %>
     </div>
-
+    <hr>
     <div><strong>Description:</strong>
       <%= @product.description %>
     </div>
@@ -51,4 +52,5 @@
     </div>
   </section>
 
+</div>
 </div>
