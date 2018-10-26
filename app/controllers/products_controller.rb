@@ -72,6 +72,12 @@ class ProductsController < ApplicationController
     end
   end
 
+# shipped toggle method - onced checked, the status should chacnge from true to false ship to shipped
+
+  # def toggle_enable_status
+  #
+  # end
+
   def destroy
     if @login_user
 
