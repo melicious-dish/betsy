@@ -6,6 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
 
   # QUESTION: should this instead be in a view helper?
   def convert_int_to_f(int)
-    return int/100.to_f
+    if int.class == Integer
+      return int/100.to_f
+    end
   end
 end
