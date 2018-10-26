@@ -17,6 +17,7 @@
 }
 
 .merchant-show-title {
+  text-align: center;
   color: #292F36;
   text-transform:uppercase;
   letter-spacing: .5em;
@@ -69,4 +70,32 @@
 .order-summary {
   background-color: #FFE5E7 !important;
   border: 1px #292F36 solid;
+}
+
+
+
+
+.mini-body-about{
+justify-content: center;
+ color: black;
+  background-color: white;
+    width: 80%;
+    border: 10px solid white;
+    padding: 15px;
+    margin: auto;
+}
+
+.about-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  justify-content: center;
+  grid-column-gap: 50px;
+  grid-row-gap: 20px;
+  align-self: auto;
+}
+
+.grid-item {
+  padding: 20px
+
 }
