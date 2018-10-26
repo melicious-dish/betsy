@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   resources :orders do
+    #put '/filter_status', to: 'orders#filter_status', as: 'filter_order'
   end
 
   resources :order_items, include: [:show, :delete]
@@ -35,8 +36,6 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     post '/add_order_item', to: 'order_items#create', as: 'order_items_create'
-    # route for ship toggle
-    #patch '/toggle_enable_status' to: 'toggle_enable_status', as: 'toggle'
     resources :reviews, shallow: true
   end
 
