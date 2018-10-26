@@ -4,6 +4,14 @@ class Order < ApplicationRecord
   # for joining products though o_i
   has_many :products, through: :order_items
 
+  validates :guest_cc_name, presence: true, :if => :confirm_payment?
+  validates :guest_email, presence: true, :if => :confirm_payment?
+  validates :guest_mailing, presence: true, :if => :confirm_payment?
+  validates :guest_cc_num, presence: true, :if => :confirm_payment?
+  validates :guest_cc_exp_date, presence: true, :if => :confirm_payment?
+  validates :guest_cc_cvv_code, presence: true, :if => :confirm_payment?
+  validates :guest_cc_zip, presence: true, :if => :confirm_payment?
+  
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 
@@ -60,7 +68,6 @@ def self.total_revenue()
 end
 
 
-
 # def self.total_revenue()
 #   self.merchant_revenue_by_order_items
 #
@@ -73,5 +80,9 @@ end
   # def set_fullfillment_status
   #   self.order_status_id = 1
   # end
+  def confirm_payment?
+    self.payment_status == "paid"
+  end
+
 
 end
