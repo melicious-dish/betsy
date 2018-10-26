@@ -32,13 +32,18 @@
 
   <table>
     <td>
-      <th>Filter by Status: All Orders --toggle-- </th>
+      <th>
+        Filter by Status:
+        </th>
     </td>
     <td>
-      Paid:
+      <%= link_to "All Orders" %>
     </td>
     <td>
-      Complete:
+      <%= link_to "Paid", order_filter_order_path %>
+    </td>
+    <td>
+      <%= link_to "Complete" %>
     </td>
   </table>
   <% end %>

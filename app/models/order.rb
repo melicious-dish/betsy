@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   # for joining products though o_i
   has_many :products, through: :order_items
 
+  scope :filter_status, -> (filterstatus) { where filter_status: status }
+
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 
@@ -59,6 +61,9 @@ def self.total_revenue()
   order_items.sum {|item| item.order_item_subtotal}
 end
 
+def filter_status
+  @orders = Order.status("pending").starts_with("Paid")
+end
 
 
 # def self.total_revenue()
