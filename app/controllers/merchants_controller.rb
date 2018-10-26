@@ -42,4 +42,9 @@ class MerchantsController < ApplicationController
     end
   end
 
+
+  def about_us
+  end
+  
+
 end
