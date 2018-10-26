@@ -42,4 +42,8 @@ class MerchantsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def about_us
+  end
+  
 end
