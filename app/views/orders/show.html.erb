@@ -1,8 +1,10 @@
-<h2>Thanks for shopping with us!</h2>
-<br />
+<div class="mini-body">
+  <section class="product-title">
+    <h2>Thanks for shopping with us!</h2>
+  </section>
+  <hr><br>
 
-<h2> Order Details </h2>
-
+<h3> Order Details </h3>
 <p>Order: #<%=@order.id %> </p>
 <p>Purchased on: <%=@order.created_at.strftime("%m/%d/%Y") %> </p>
 <p>Purchase status: <%=@order.payment_status %> </p>
@@ -13,7 +15,7 @@
 
 
 
-<h2> Products Purchased </h2>
+<h3> Products Purchased </h3>
 <table class="table table-striped">
   <thead>
     <tr>
