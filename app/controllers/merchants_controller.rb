@@ -13,7 +13,6 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
-
   def order_summary
     # show orders that belong only to merchant
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
@@ -43,7 +42,9 @@ class MerchantsController < ApplicationController
     end
   end
 
+
   def about_us
   end
   
+
 end

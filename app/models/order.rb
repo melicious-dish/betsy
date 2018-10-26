@@ -59,6 +59,8 @@ def self.total_revenue()
   order_items.sum {|item| item.order_item_subtotal}
 end
 
+
+
 # def self.total_revenue()
 #   self.merchant_revenue_by_order_items
 #

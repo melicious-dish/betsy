@@ -24,6 +24,7 @@ class OrderItemsController < ApplicationController
       flash[:result_text] = "DID NOT create order item #{order_id}"
       flash[:messages] = @order_item.errors.messages
     end
+
     redirect_back(fallback_location: root_path)
   end
 
