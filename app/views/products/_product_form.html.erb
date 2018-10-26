@@ -9,7 +9,7 @@
 
     <div class="form-group">
       <%= f.label :price%>
-      <%= f.text_field :price, class: "form-control" %>
+      <%= f.text_field :price, class: "form-control", :value => number_with_precision(f.object.price_int_to_float, :precision => 2) %>
     </div>
 
     <div class="form-group">

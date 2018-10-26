@@ -53,14 +53,22 @@ class ProductsController < ApplicationController
     @avg_rating = self.get_average_rating()
   end
 
-  def edit;
+  def edit
+    @product = Product.find_by(id: params[:id])
 
   end
 
   def update
     if @login_user
 
-      if @product.update(product_params)
+      @product.update(product_params)
+
+
+      @product.price = @product.price_float_to_int
+
+      result = @product.save
+
+      if result
         flash[:status] = :success
         flash[:result_text] = "Successfully updated product #{@product.name}"
         redirect_to product_path(@product.id)
@@ -75,7 +83,7 @@ class ProductsController < ApplicationController
     end
   end
 
-# shipped toggle method - onced checked, the status should chacnge from true to false ship to shipped
+  # shipped toggle method - onced checked, the status should chacnge from true to false ship to shipped
 
   # def toggle_enable_status
   #
@@ -134,7 +142,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-      params.require(:product).permit(:name, :price, :description, :photo_url, :status, :inventory, category_ids: [])
+    params.require(:product).permit(:name, :price, :description, :photo_url, :status, :inventory, category_ids: [])
   end
 
   def find_product
