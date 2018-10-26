@@ -13,12 +13,7 @@ class MerchantsController < ApplicationController
     render_404 unless @merchant
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> e06c447a7a71e037e033a6493c74461dc16068d0
   def order_summary
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
   end
@@ -43,9 +38,5 @@ class MerchantsController < ApplicationController
       redirect_to root_path
     end
   end
-<<<<<<< HEAD
 
->>>>>>> f99cc427bc66de5c47dce4797ccc554dc4db82dc
-=======
->>>>>>> e06c447a7a71e037e033a6493c74461dc16068d0
 end

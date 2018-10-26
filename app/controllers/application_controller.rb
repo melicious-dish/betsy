@@ -31,21 +31,14 @@ class ApplicationController < ActionController::Base
       # redirect_to root_path
       return ongoing_order.id
     else
-<<<<<<< HEAD
-<<<<<<< HEAD
-      puts "oh no"
-=======
-=======
 
->>>>>>> e06c447a7a71e037e033a6493c74461dc16068d0
+      puts "oh no"
+
       flash[:status] = :failure
       flash[:result_text] = "Your order does not exist"
       redirect_to root_path
 
-<<<<<<< HEAD
->>>>>>> f99cc427bc66de5c47dce4797ccc554dc4db82dc
-=======
->>>>>>> e06c447a7a71e037e033a6493c74461dc16068d0
+
     end
 
   end

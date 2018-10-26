@@ -1,8 +1,7 @@
-<h2> Orders Summary: </h2>
+<h2> Merchant Summary: </h2>
 
 
   <% if @login_user != nil %>
-  <!-- these need to be filtered by revenue, order status, total orders -->
   <table>
     <thead>
       <td>
@@ -55,7 +54,7 @@
     <th>Purchase Date</th>
     <th>Items</th>
     <th>Current Status</th>
-    <th>Ship Status</th>
+    <th>Shipped/</th>
 
   </tr>
   <% @orders.each do |order| %>
@@ -80,13 +79,6 @@
     <td>
       <%= order.payment_status %>
     </td>
-    <td>
-      <!-- Shipped button needs to toggle to ship -->
-      <%= link_to "Mark as shipped", edit_product_path(order.id),
-      class: "btn btn-danger"%>
-    </td>
-
-
   </tr>
   <% end %>
 </table>
