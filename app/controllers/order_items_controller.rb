@@ -44,6 +44,24 @@ class OrderItemsController < ApplicationController
     redirect_to orders_path
 
   end
+
+  def change_shipping_status
+    @order_item = OrderItem.find_by(id: params[:order_item_id])
+
+    @order_item.update(shipped: params[:shipped])
+
+    if @order_item.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully changed shipping status for item #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not change shipping status for order item #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
   # NOTE: actions below are for order... should instead be for order_item?
 
   # def update

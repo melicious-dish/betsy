@@ -32,8 +32,7 @@
       <%= product.inventory %>
     </td>
     <td>
-      <!-- TODO: do some work to display it nicely -->
-      <%= product.price %>
+      <%= number_to_currency(product.price_int_to_float, precision: 2) %>
     </td>
     <td>
       <!-- TODO: change true to show as active/available and false to show as discontinued/unavailable -->

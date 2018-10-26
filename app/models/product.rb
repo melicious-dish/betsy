@@ -26,5 +26,9 @@ class Product < ApplicationRecord
     return convert_int_to_f(self.price)
   end
 
+  def price_float_to_int()
+    return self.price * 100
+  end
+
 
 end
