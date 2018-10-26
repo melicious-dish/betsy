@@ -31,14 +31,10 @@ class ApplicationController < ActionController::Base
       # redirect_to root_path
       return ongoing_order.id
     else
-
       puts "oh no"
-
       flash[:status] = :failure
       flash[:result_text] = "Your order does not exist."
       redirect_to root_path
-
-
     end
 
   end
@@ -62,7 +58,6 @@ class ApplicationController < ActionController::Base
     if find_merchant.nil?
       flash[:status] = :failure
       flash[:result_text] = "You must be a logged in merchant to view this page."
-
       redirect_to root_path
     end
   end
