@@ -46,7 +46,7 @@
 
 
       <li>
-        <% if session[:merchant_id] %>
+        <% if @login_user %>
           <li class="nav-item app-header__nav_item">
           <%= link_to "My Account", merchant_path(@login_user), id: "session", class: "btn btn-primary" %>
               </li>
