@@ -27,6 +27,14 @@ class Order < ApplicationRecord
     end
   end
 
+  # def show_only_merchant_order_items()
+  #   all_items_in_order = self.order_items
+  #
+  #   all_products_in_order = all_items_in_order.map {|product| product.where(id: item.product_id)}
+  #
+  #   return all_products_in_order
+  # end
+
 
 
   private
