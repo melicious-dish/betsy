@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   end
 
   def show;
-
+    @avg_rating = self.get_average_rating()
   end
 
   def edit;
@@ -106,6 +106,26 @@ class ProductsController < ApplicationController
       flash[:result_text] = "Failed to add to cart"
       # render :show
     end
+  end
+
+  def get_average_rating
+    reviews = Review.where(product_id: @product.id)
+    sum = 0
+
+    reviews.each do |review|
+      unless review.star_rating == nil
+        sum = sum + review.star_rating
+      end
+    end
+
+    length = reviews.length
+
+    if length == 0
+      return 0
+    end
+
+    average = sum / length
+    return average
   end
 
   private
