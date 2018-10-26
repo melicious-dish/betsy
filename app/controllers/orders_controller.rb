@@ -23,9 +23,11 @@ class OrdersController < ApplicationController
     #   head :not_found
     # else @order_items = current_order.order_items
     # end
-    flash[:status] = :failure
-    flash[:result_text] = "Access denied."
-    redirect_to root_path
+    # unless matching_guest
+    #   flash[:status] = :failure
+    #   flash[:result_text] = "Access denied."
+    #   redirect_to root_path
+    # end
   end
 
   def create

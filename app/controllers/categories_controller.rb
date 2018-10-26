@@ -16,7 +16,9 @@ class CategoriesController < ApplicationController
 
   def create
     if @login_user.nil?
-      render_404
+      flash[:status] = :failure
+      flash[:result_text] = "You must be logged in to add a new category."
+      redirect_to root_path
     else
       @category = Category.new(category_params)
       if @category.save
@@ -26,7 +28,7 @@ class CategoriesController < ApplicationController
         redirect_to root_path
       else
         flash[:status] = :failure
-        flash[:result_text] = "Could not create category: #{@category}."
+        flash[:result_text] = "Could not create category: #{@category.category_name}."
         flash[:messages] = @category.errors.messages
         render :new, status: :bad_request
       end
