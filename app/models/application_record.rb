@@ -5,9 +5,9 @@ class ApplicationRecord < ActiveRecord::Base
 
 
   # QUESTION: should this instead be in a view helper?
-  def convert_int_to_f(int)
-    if int.class == Integer
-      return int/100.to_f
+  def convert_int_to_f(num)
+    if num.class == Integer || num.class == Float
+      return num.to_f/100.to_f
     end
   end
 end
