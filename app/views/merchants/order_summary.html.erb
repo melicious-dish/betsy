@@ -54,7 +54,10 @@
   <tr class="order-header">
     <th>Order ID</th>
     <th>Purchase Date</th>
-    <th>Items</th>
+    <th>Item Name</th>
+    <th>Item Quantity</th>
+    <th>Item Price</th>
+    <th>Item Subtotal</th>
     <th>Current Status</th>
     <th>Ship Status</th>
   </thead>
@@ -72,13 +75,19 @@
       <%= item.order.created_at.strftime("%m/%d/%Y") %>
     </td>
     <td>
-      <ul class="order-items">
-      <li>
         <%= item.product.name %>
+    </td>
+    <td>
+
         <%= item.quantity %>
-        <%= number_to_currency(item.order_item_subtotal, precision: 2) %>
-      </li>
-      </ul>
+      </td>
+      <td>
+
+          <%= number_to_currency(item.product.price_int_to_float, precision: 2) %>
+        </td>
+<td>
+          <%= number_to_currency(item.order_item_subtotal, precision: 2) %>
+
     </td>
     <td>
       <%= item.order.payment_status %>
