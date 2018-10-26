@@ -1,13 +1,14 @@
+<div class="mini-body">
 <section class="product-title">
 <% if params[:category_id] %>
   <h2>List of Products: <%= Category.find(params[:category_id]).category_name.capitalize %>
     <% elsif params[:merchant_id] %>
     <h2><%= Merchant.find(params[:merchant_id]).username %>'s shop </h2>
   <% else %>
-  <h2>Shop All Products</h2>
+  <h2>All Products</h2>
   <% end %>
 </section>
-
+<hr>
 <container>
 <p></p>
 <ul class="grid-container">
@@ -26,3 +27,5 @@
   <% end %>
 </ul>
 </container>
+
+</div>

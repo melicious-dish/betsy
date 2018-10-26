@@ -68,12 +68,6 @@ body {
 	}
 }
 
-//
-
-
-
-
-
 
 
 .welcome {
@@ -84,7 +78,10 @@ body {
 
 
 h2 {
-  text-shadow: 2px 2px #FBA09C;
+  color: #292F36;
+  text-transform:uppercase;
+  letter-spacing: 1em;
+  text-shadow: 2px 2px #B1B3B5;
 }
 
 body {
@@ -242,4 +239,15 @@ a:hover {
   margin-bottom: auto;
   height: auto;
   width: 100%;
+}
+
+
+
+.mini-body {
+  color: black;
+  background-color: white;
+    width: 80%;
+    border: 10px solid white;
+    padding: 25px;
+    margin: auto;
 }
