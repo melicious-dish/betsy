@@ -43,6 +43,9 @@ class ProductsController < ApplicationController
         redirect_to product_path(@product)
         # debugger
       else
+        flash[:status] = :failure
+        flash[:result_text] = "Experiencing an issue with order #{@product.id}."
+        flash[:messages] = @product.errors.messages
         render :new
       end
     end
@@ -84,6 +87,7 @@ class ProductsController < ApplicationController
       else
         flash[:status] = :failure
         flash[:result_text] = "Failed to update"
+        flash[:messages] = @product.errors.messages
         render :edit, status: :bad_request
       end
     else
