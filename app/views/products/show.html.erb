@@ -24,14 +24,18 @@
     </div>
     <p>
     <div>
-      <strong>Available Stock:</strong> <%= @product.inventory %>
-    </div>
-    <div>
-    <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
-      <strong><%= f.label :quantity%></strong>
-      <%= f.select :quantity, (1..@product.inventory)  %><br>
-      <%= f.submit "Add Item to Cart", class: "btn btn-primary add-cart" %>
-      <% end %>
+      <% if @product.inventory < 1 %>
+        <strong>Out of Stock</strong>
+        <% else %>
+        <strong>Available Stock:</strong> <%= @product.inventory %>
+        </div>
+        <div>
+          <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
+            <strong><%= f.label :quantity%></strong>
+            <%= f.select :quantity, (1..@product.inventory)  %><br>
+            <%= f.submit "Add Item to Cart", class: "btn btn-primary add-cart" %>
+          <% end %>
+        <% end %>
     </div>
     <hr>
     <div><strong>Description:</strong>

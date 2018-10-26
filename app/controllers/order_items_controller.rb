@@ -17,7 +17,7 @@ class OrderItemsController < ApplicationController
     if result
       flash[:status] = :success
       flash[:result_text] = "Successfully created
-      order item #{@order_item.product.name}. Your order ID is: #{@order_item.order.id} and session ID is #{session[:order_id]} and order item id is #{@order_item.id}"
+      order item #{@order_item.product.name}."
 
     else
       flash[:status] = :failure
