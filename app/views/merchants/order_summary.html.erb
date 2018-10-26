@@ -1,16 +1,19 @@
-<h2> Orders Summary: </h2>
-
+<div class="mini-body">
+<section class="merchant-show-title">
+<h2> Orders Summary </h2>
+</section>
+<hr>
   <% if @login_user != nil %>
   <table>
     <thead>
       <td>
-    <th>Total Revenue: <%= number_to_currency(@orders.total_revenue, precision: 2) %></th>
+    <th><strong>Total Revenue:</strong> <%= number_to_currency(@orders.total_revenue, precision: 2) %></th>
     </td>
     <td>
-      by status Paid: <%= number_to_currency(@orders.revenue_by_status("paid"), precision: 2)%>
+      <strong>By status Paid:</strong> <%= number_to_currency(@orders.revenue_by_status("paid"), precision: 2)%>
     </td>
     <td>
-      by status Complete: <%= number_to_currency(@orders.revenue_by_status("complete"), precision: 2)%>
+      <strong>By status Complete:</strong> <%= number_to_currency(@orders.revenue_by_status("complete"), precision: 2)%>
     </td>
   </table>
 
@@ -18,17 +21,17 @@
 
   <table>
     <td>
-      <th>Total Orders: <%= @orders.length %> </th>
+      <th><strong>Total Orders:</strong> <%= @orders.length %> </th>
     </td>
     <td>
-      Orders Paid: <%= @orders.total_orders_by_status("paid") %>
+      <strong>Orders Paid:</strong> <%= @orders.total_orders_by_status("paid") %>
     </td>
     <td>
-      Orders Complete: <%= @orders.total_orders_by_status("complete") %>
+      <strong>Orders Complete:</strong> <%= @orders.total_orders_by_status("complete") %>
     </td>
   </table>
 
-<br>
+<hr>
 
   <table>
     <td>
@@ -42,11 +45,9 @@
     </td>
   </table>
   <% end %>
-
-
+<br>
 
   <h2>Orders</h2>
-
 <table>
   <thead>
 
@@ -110,3 +111,4 @@
   <% end %>
 </tbody>
 </table>
+</div>
