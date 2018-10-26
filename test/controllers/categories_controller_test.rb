@@ -33,7 +33,7 @@ describe CategoriesController do
 
     it 'does not allow  a blank name' do
       merchants(:mercury)
-      expect { post categories_path, params: {category: {name: "   "}}}.must_change 'Category.count', 0
+      expect { post categories_path, params: {category: {category_name: "   "}}}.must_change 'Category.count', 0
 
       post categories_path, params: {category: {name: ""}}
       must_respond_with :bad_request
