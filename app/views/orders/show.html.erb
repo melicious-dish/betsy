@@ -1,8 +1,10 @@
 <div class="mini-body">
+  <% if session[:merchant_id].nil? %>
   <section class="product-title">
     <h2>Thanks for shopping with us!</h2>
   </section>
   <hr><br>
+  <% end %>
 
 <h3> Order Details </h3>
 <p>Order: #<%=@order.id %> </p>
