@@ -17,7 +17,7 @@ class OrderItemsController < ApplicationController
     if result
       flash[:status] = :success
       flash[:result_text] = "Successfully created
-      order item #{@order_item.product.name}. Your order ID is: #{@order_item.order.id} and session ID is #{session[:order_id]} and order item id is #{@order_item.id}"
+      order item #{@order_item.product.name}."
 
     else
       flash[:status] = :failure
@@ -43,6 +43,24 @@ class OrderItemsController < ApplicationController
     end
     redirect_to orders_path
 
+  end
+
+  def change_shipping_status
+    @order_item = OrderItem.find_by(id: params[:order_item_id])
+
+    @order_item.update(shipped: params[:shipped])
+
+    if @order_item.save
+      flash[:status] = :success
+      flash[:result_text] = "Successfully changed shipping status for item #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    else
+      flash[:status] = :failure
+      flash[:result_text] = "Could not change shipping status for order item #{@order_item.product.name}"
+      flash[:messages] = @order_item.errors.messages
+    end
+
+    redirect_back(fallback_location: root_path)
   end
   # NOTE: actions below are for order... should instead be for order_item?
 

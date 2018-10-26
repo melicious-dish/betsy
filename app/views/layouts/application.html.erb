@@ -23,7 +23,7 @@
         <%= link_to "Shop All Products", products_path, class: "nav-link" %>
       </li>
       <div class="dropdown">
-        <span><%= link_to "Shop By Merchants", merchants_path, class: "nav-link" %></span>
+        <span><%= link_to "Shop By Merchant", merchants_path, class: "nav-link" %></span>
           <div class="dropdown-content">
             <% Merchant.all.each do |merchant| %>
               <li><%= link_to merchant.username, merchant_products_path(merchant.id) %></li>

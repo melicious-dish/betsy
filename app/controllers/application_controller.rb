@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     elsif
       ongoing_order = Order.find_by(id: session[:order_id])
       flash[:status] = :failure
-      flash[:result_text] = "Cart already open"
+      flash[:result_text] = "You already have a cart in progress."
       # redirect_to root_path
       return ongoing_order.id
     else
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
 >>>>>>> e06c447a7a71e037e033a6493c74461dc16068d0
       flash[:status] = :failure
-      flash[:result_text] = "Your order does not exist"
+      flash[:result_text] = "Your order does not exist."
       redirect_to root_path
 
 <<<<<<< HEAD

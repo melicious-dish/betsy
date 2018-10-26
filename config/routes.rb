@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   put '/update_order_item', to: 'order_items#update', as: 'order_items_update'
 
+  put '/ship_me/', to: 'order_items#change_shipping_status', as:
+  'ship_item'
+
 
 
   resources :categories do
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
     post '/add_order_item', to: 'order_items#create', as: 'order_items_create'
     # route for ship toggle
     #patch '/toggle_enable_status' to: 'toggle_enable_status', as: 'toggle'
+    resources :reviews, shallow: true
   end
 
 
