@@ -1,7 +1,6 @@
 <h2> Orders Summary: </h2>
 
   <% if @login_user != nil %>
-  <!-- these need to be filtered by revenue, order status, total orders -->
   <table>
     <thead>
       <td>
@@ -96,6 +95,7 @@
     <td>
       <%= item.shipped %>
     </td>
+
     <td>
       <!-- Shipped button needs to toggle to ship -->
       <% if item.shipped == false %>
