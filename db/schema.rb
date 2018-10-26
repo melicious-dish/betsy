@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_25_015735) do
+ActiveRecord::Schema.define(version: 2018_10_26_173653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_015735) do
     t.string "name"
     t.integer "price"
     t.string "description"
-    t.string "photo_url"
+    t.string "photo_url", default: "https://i.imgur.com/lbztpnF.jpg"
     t.boolean "status", default: true
     t.integer "inventory"
     t.datetime "created_at", null: false

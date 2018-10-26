@@ -17,16 +17,24 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.photo_url = ""
   end
 
   def create
     if @login_user
       # merchant_id = @login_user.id
       # @login_user = @merchant.product.id
-      @product = Product.new(product_params)
+      params = product_params
 
-      @product.price = @product.price_float_to_int
-      @product.merchant_id = @login_user.id
+      params[:price] = params[:price].to_f * 100
+      params[:merchant_id] = @login_user.id
+      params[:photo_url] = "https://i.imgur.com/lbztpnF.jpg" if params[:photo_url].empty?
+
+      @product = Product.new(params)
+      # @product.price = @product.price_float_to_int
+      # @product.merchant_id = @login_user.id
+      # @product.photo_url = "https://i.imgur.com/lbztpnF.jpg" if @product.photo_url.empty?
+
 
       if @product.save
         flash[:status] = :success
@@ -61,10 +69,11 @@ class ProductsController < ApplicationController
   def update
     if @login_user
 
-      @product.update(product_params)
+      params = product_params
 
+      params[:price] = params[:price].to_f * 100
 
-      @product.price = @product.price_float_to_int
+      @product.update(params)
 
       result = @product.save
 
