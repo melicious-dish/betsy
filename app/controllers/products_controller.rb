@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.photo_url = ""
   end
 
   def create
@@ -27,6 +28,7 @@ class ProductsController < ApplicationController
 
       @product.price = @product.price_float_to_int
       @product.merchant_id = @login_user.id
+      @product.photo_url = "https://i.imgur.com/lbztpnF.jpg" if @product.photo_url.empty?
 
       if @product.save
         flash[:status] = :success
