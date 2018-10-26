@@ -23,10 +23,17 @@ class OrdersController < ApplicationController
     #   head :not_found
     # else @order_items = current_order.order_items
     # end
-    # unless matching_guest
-    #   flash[:status] = :failure
-    #   flash[:result_text] = "Access denied."
-    #   redirect_to root_path
+
+    # @order = Order.find_by(id: params[:id])
+    # unless @order
+    #   render_404
+    # else
+    #   merchants = @order.products.map { |p| p.merchant }
+    #   if !merchants.include?(matching_guest)
+    #     flash[:status] = :failure
+    #     flash[:result_text] = "Access denied."
+    #     redirect_to root_path
+    #   end
     # end
   end
 
@@ -123,8 +130,16 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.nil?
-      head :not_found
+    # if @order.nil?
+    #   head :not_found
+    # end
+    @order.update(order_params)
+    if
+      @order.update(status: "paid")
+      flash.now[:status] = :failure
+      flash.now[:result_text] = "Boo!"
+      flash.now[:messages] = humanize(@order.errors.messages)
+      render :new, status: :bad_request
     end
   end
 

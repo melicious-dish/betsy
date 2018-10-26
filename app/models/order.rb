@@ -65,7 +65,6 @@ def filter_status
   @orders = Order.status("pending").starts_with("Paid")
 end
 
-
 # def self.total_revenue()
 #   self.merchant_revenue_by_order_items
 #
@@ -78,5 +77,9 @@ end
   # def set_fullfillment_status
   #   self.order_status_id = 1
   # end
+  def confirm_payment?
+    self.payment_status == "paid"
+  end
+
 
 end
