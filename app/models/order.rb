@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   # TODO: decide/add more validations+testing (cc info, mailing address, etc)
-  has_many :order_items
+  has_many :order_items, dependent: :delete_all
   # for joining products though o_i
   has_many :products, through: :order_items
 
@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :guest_cc_exp_date, presence: true, :if => :confirm_payment?
   validates :guest_cc_cvv_code, presence: true, :if => :confirm_payment?
   validates :guest_cc_zip, presence: true, :if => :confirm_payment?
-  
+
 
   # QUESTION: fulfillment_status --> check to make sure that statuses are one of the allowed ones (ex: pending, completed, paid, etc.)
 

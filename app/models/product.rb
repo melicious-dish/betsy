@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  has_many :reviews
-  has_many :order_items
+  has_many :reviews, dependent: :delete_all
+  has_many :order_items, dependent: :delete_all
   # for join table
   has_many :orders, through: :order_items
   belongs_to :merchant

@@ -1,5 +1,5 @@
 class Merchant < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :delete_all
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
