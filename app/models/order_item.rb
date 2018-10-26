@@ -40,7 +40,14 @@ class OrderItem < ApplicationRecord
     end
 
   end
+  def double_check_availability()
+    if self.product.inventory < 1
+      flash[:status] = :failure
+      flash[:result_text] = "Sorry - product #{self.product.name} is no longer available!"
 
+      redirect_to order_item_path(order_item.id), method: :delete
+    end
+  end
 
 
 
