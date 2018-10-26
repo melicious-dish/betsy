@@ -1,18 +1,19 @@
+<div class="mini-body">
+
 <section class="product-title">
   <h2>Product Details</h2>
 </section>
-
-<div class="show-grid-container">
+<hr><br>
+  <div class="show-grid-container">
   <section class="show-grid-image">
     <%= image_tag "#{@product.photo_url}", class: "show-image" %>
   </section>
-
 
   <section class="show-grid-details">
     <h4>
       <strong><%= @product.name %></strong>
     </h4>
-
+    <p>
     <div>
       <strong>Price:</strong>
         <%= number_to_currency(@product.price_int_to_float, precision: 2) %>
@@ -21,15 +22,18 @@
     <div><strong>Seller:</strong>
       <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %>
     </div>
-
+    <p>
+    <div>
+      <strong>Available Stock:</strong> <%= @product.inventory %>
+    </div>
     <div>
     <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
-      <%= f.label :quantity%>
-      <%= f.select :quantity, (1..@product.inventory) %><br>
-      <%= f.submit "Add Item to Cart" %>
+      <strong><%= f.label :quantity%></strong>
+      <%= f.select :quantity, (1..@product.inventory)  %><br>
+      <%= f.submit "Add Item to Cart", class: "btn btn-primary add-cart" %>
       <% end %>
     </div>
-
+    <hr>
     <div><strong>Description:</strong>
       <%= @product.description %>
     </div>
@@ -43,11 +47,25 @@
 </div>
 
   <section class="review-container">
-    <div><strong>Rating Summary:</strong>
-      <%= %>
+    <div>
+      <h4><strong>Rating Summary</strong></h4>
     </div>
-    <div><strong>Reviews:</strong>
-      <%= %>
+    <div>
+        <li> Average rating: <%= @avg_rating %></li>
+    </div>
+    <hr>
+    <div>
+      <strong>Reviews</strong>
+        <%  @product.reviews.each do |r| %>
+        <li> Rating: <%=  r.star_rating %></li>
+        <p>
+        <li> Review: <%=  r.text %></li>
+        <hr>
+        <% end %>
+    </div>
+    <p>
+    <div>
+      <%= link_to "Add review", new_product_review_path(@product), class: "btn btn-primary add-cart"%>
     </div>
   </section>
 

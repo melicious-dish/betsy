@@ -15,7 +15,11 @@ class MerchantsController < ApplicationController
 
 
   def order_summary
+    # show orders that belong only to merchant
     @orders = Order.joins(:products).where(products: {merchant_id: params[:merchant_id]})
+
+    # show order_items that belong only to merchant
+    @order_items = @orders.map { |order| order.order_items }.flatten
   end
 
   private
