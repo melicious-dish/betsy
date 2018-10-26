@@ -22,10 +22,13 @@
     <div><strong>Seller:</strong>
       <%= link_to @product.merchant.username, merchant_products_path(@product.merchant.id) %>
     </div>
-    <hr>
+    <p>
+    <div>
+      <strong>Available Stock:</strong> <%= @product.inventory %>
+    </div>
     <div>
     <%= form_with model: @order, url: product_order_items_create_path(@product.id), method: :post do |f|%>
-      <%= f.label :quantity%>
+      <strong><%= f.label :quantity%></strong>
       <%= f.select :quantity, (1..@product.inventory)  %><br>
       <%= f.submit "Add Item to Cart", class: "btn btn-primary add-cart" %>
       <% end %>
@@ -44,13 +47,26 @@
 </div>
 
   <section class="review-container">
-    <div><strong>Rating Summary:</strong>
-      <%= %>
+    <div>
+      <h4><strong>Rating Summary</strong></h4>
     </div>
-    <div><strong>Reviews:</strong>
-      <%= %>
+    <div>
+        <li> Average rating: <%= @avg_rating %></li>
+    </div>
+    <hr>
+    <div>
+      <strong>Reviews</strong>
+        <%  @product.reviews.each do |r| %>
+        <li> Rating: <%=  r.star_rating %></li>
+        <p>
+        <li> Review: <%=  r.text %></li>
+        <hr>
+        <% end %>
+    </div>
+    <p>
+    <div>
+      <%= link_to "Add review", new_product_review_path(@product), class: "btn btn-primary add-cart"%>
     </div>
   </section>
 
-</div>
 </div>

@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   has_many :reviews
   has_many :order_items
-  # for join table 
+  # for join table
   has_many :orders, through: :order_items
   belongs_to :merchant
   has_and_belongs_to_many :categories
@@ -25,7 +25,6 @@ class Product < ApplicationRecord
   def price_int_to_float()
     return convert_int_to_f(self.price)
   end
-
 
 
 end
