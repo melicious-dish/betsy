@@ -24,7 +24,10 @@ class ProductsController < ApplicationController
       # merchant_id = @login_user.id
       # @login_user = @merchant.product.id
       @product = Product.new(product_params)
+
+      @product.price = @product.price_float_to_int
       @product.merchant_id = @login_user.id
+
       if @product.save
         flash[:status] = :success
         flash[:result_text] = "Successfully created
