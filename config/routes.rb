@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   put '/update_order_item', to: 'order_items#update', as: 'order_items_update'
 
+  put '/ship_me/', to: 'order_items#change_shipping_status', as:
+  'ship_item'
+
 
 
   resources :categories do

@@ -60,6 +60,7 @@
     <th>Item Subtotal</th>
     <th>Current Status</th>
     <th>Ship Status</th>
+    <th></th>
   </thead>
 
 <tbody>
@@ -93,9 +94,15 @@
       <%= item.order.payment_status %>
     </td>
     <td>
+      <%= item.shipped %>
+    </td>
+    <td>
       <!-- Shipped button needs to toggle to ship -->
-      <%= link_to "Mark as shipped", edit_product_path(item.order.id),
-      class: "btn btn-danger"%>
+      <% if item.shipped == false %>
+      <%= link_to "Mark as shipped", ship_item_path({order_item_id: item.id, shipped: true}), method: :put, class: "btn btn-danger"%>
+      <% else %>
+      <%= link_to "Unship", ship_item_path({order_item_id: item.id, shipped: false}), method: :put, class: "btn btn-danger"%>
+      <% end %>
     </td>
 
 
